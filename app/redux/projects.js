@@ -1,4 +1,13 @@
-export const setProjects = () => {};
+import axios from 'axios'
+
+const SET_PROJECTS = 'SET_PROJECTS'
+
+export const setProjects = (projects) => {
+  return {
+    type: SET_PROJECTS,
+    projects
+  }
+};
 
 export const fetchProjects = () => {};
 
