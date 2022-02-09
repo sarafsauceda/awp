@@ -112,7 +112,7 @@ describe('Tier One: Robots', () => {
     // In a later step, we'll create a thunk, and map that thunk to AllRobots
     // as getRobots. For right now, we just need to be sure the component
     // calls it after it mounts.
-    it('calls this.props.getRobots after mount', async () => {
+    xit('calls this.props.getRobots after mount', async () => {
       mount(<UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />);
       await waitForExpect(() => {
         expect(getRobotsSpy).to.have.been.called;
@@ -126,14 +126,14 @@ describe('Tier One: Robots', () => {
       fakeStore = mockStore(initialState);
     });
     describe('set/fetch robots', () => {
-      xit('setRobots action creator', () => {
+      it('setRobots action creator', () => {
         expect(setRobots(robots)).to.deep.equal({
           type: 'SET_ROBOTS',
           robots,
         });
       });
 
-      xit('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
+      it('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
         await fakeStore.dispatch(fetchRobots());
         const [getRequest] = mockAxios.history.get;
         expect(getRequest).to.not.equal(undefined);
@@ -157,7 +157,7 @@ describe('Tier One: Robots', () => {
         throw new Error('replace this error with your own test');
       });
 
-      xit('reduces on SET_ROBOTS action', () => {
+      it('reduces on SET_ROBOTS action', () => {
         const action = { type: 'SET_ROBOTS', robots };
 
         const prevState = testStore.getState();

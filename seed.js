@@ -40,8 +40,14 @@ const seed = async () => {
   try {
     await db.sync({ force: true });
       // seed your database here!
-    return Robot.bulkCreate(robots)
-    .then(() => Project.bulkCreate(projects))
+    // return Robot.bulkCreate(robots)
+    // .then(() => Project.bulkCreate(projects))
+    await Promise.all(robots.map(robot => {
+      return Robot.create(robot);
+    }))
+    await Promise.all(projects.map(project => {
+      return Project.create(project);
+    }))
   } catch (err) {
     console.log(red(err));
   }

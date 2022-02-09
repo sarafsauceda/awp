@@ -113,20 +113,20 @@ describe('Tier One: Projects', () => {
     });
   });
 
-  describe('Redux', () => {
+  describe.only('Redux', () => {
     let fakeStore;
     beforeEach(() => {
       fakeStore = mockStore(initialState);
     });
     describe('set/fetch projects', () => {
-      xit('setProjects action creator', () => {
+      it('setProjects action creator', () => {
         expect(setProjects(projects)).to.deep.equal({
           type: 'SET_PROJECTS',
           projects,
         });
       });
 
-      xit('fetchProjects thunk creator returns a thunk that GETs /api/projects', async () => {
+      it('fetchProjects thunk creator returns a thunk that GETs /api/projects', async () => {
         await fakeStore.dispatch(fetchProjects());
         const [getRequest] = mockAxios.history.get;
         expect(getRequest).to.not.equal(undefined);
@@ -149,7 +149,7 @@ describe('Tier One: Projects', () => {
         throw new Error('replace this error with your own test');
       });
 
-      xit('reduces on SET_PROJECTS action', () => {
+      it('reduces on SET_PROJECTS action', () => {
         const action = { type: 'SET_PROJECTS', projects };
 
         const prevState = testStore.getState();
