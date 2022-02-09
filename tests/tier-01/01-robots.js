@@ -112,7 +112,7 @@ describe('Tier One: Robots', () => {
     // In a later step, we'll create a thunk, and map that thunk to AllRobots
     // as getRobots. For right now, we just need to be sure the component
     // calls it after it mounts.
-    xit('calls this.props.getRobots after mount', async () => {
+    it('calls this.props.getRobots after mount', async () => {
       mount(<UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />);
       await waitForExpect(() => {
         expect(getRobotsSpy).to.have.been.called;
