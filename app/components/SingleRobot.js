@@ -5,32 +5,33 @@ import { Link } from "react-router-dom";
 import { getSingleRobot } from "../redux/singleRobot";
 
 class SingleRobot extends React.Component {
-    componentDidMount() {
-        this.props.getSingleRobot()
-//this.props.match.params.id);
-    }
-    render() {
-        console.log('props')
-        return <div />
-    }
+  componentDidMount() {
+    this.props.getSingleRobot(this.props.match.params.robotId);
+  }
+  render() {
+    console.log('hellooo', this.props.robotId)
+    const { robot } = this.props
+    return <div />;
+
+  }
 }
 
 const mapState = (state) => {
-    //console.log("state", state);
-    return {
-      robots: state.robots,
-    };
-  };
+  console.log("state", state);
+  return [{
+    singleRobot: state.singleRobot,
+  }];
+};
 
 const mapDispatch = (dispatch) => ({
-    getSingleRobot: () => dispatch(getSingleRobot()),
-  });
+  getSingleRobot: () => dispatch(getSingleRobot()),
+});
 
 export default connect(mapState, mapDispatch)(SingleRobot);
 
 // const SingleRobot = (props) => {
 //     render{
-//   return 
+//   return
 //     <div />
 //   );
 // }

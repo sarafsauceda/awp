@@ -7,7 +7,7 @@ const GET_SINGLE_ROBOT = 'GET_SINGLE_ROBOT';
 const gotSingleRobot = (robot) => {
   return {
     type: GET_SINGLE_ROBOT,
-    robot,
+    robot
   };
 };
 
@@ -16,7 +16,7 @@ export const getSingleRobot = (id) => async (dispatch) => {
   dispatch(gotSingleRobot(data));
 };
 
-export default function singlRobotReducer(state = {}, action) {
+export default function singleRobotReducer(state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_ROBOT:
       return action.robot;
