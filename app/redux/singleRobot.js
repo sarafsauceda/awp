@@ -1,25 +1,26 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const FETCH_SINGLE_ROBOT = 'FETCH_SINGLE_ROBOT';
-const _fetchSingleRobot = (robot) => {
+//action types
+const GET_SINGLE_ROBOT = 'GET_SINGLE_ROBOT';
+
+//action creator
+const gotSingleRobot = (robot) => {
   return {
-    type: FETCH_SINGLE_ROBOT,
+    type: GET_SINGLE_ROBOT,
     robot,
   };
 };
 
-export const fetchSingleRobot = (id) => {
-  return async (dispatch) => {
-    const { data: robot } = await axios.get(`/api/robots/${id}`);
-    dispatch(_fetchSingleRobot(robot));
-  };
+export const getSingleRobot = (id) => async (dispatch) => {
+  const { data } = await axios.get(`/api/robots/${id}`);
+  dispatch(gotSingleRobot(data));
 };
 
-export default (state = {}, action) => {
+export default function singlRobotReducer(state = {}, action) {
   switch (action.type) {
-    case FETCH_SINGLE_ROBOT:
+    case GET_SINGLE_ROBOT:
       return action.robot;
     default:
       return state;
   }
-};
+}

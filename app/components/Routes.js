@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import AllRobots from './AllRobots';
 import AllProjects from './AllProjects';
+import SingleRobot from './SingleRobot';
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
             <Switch>
             <Route exact path='/robots' component={AllRobots} />
             <Route exact path='/projects' component={AllProjects} />
+            <Route exact path='/robots`${id}`' component={SingleRobot} />
             </Switch>
           </div>
           <h1>

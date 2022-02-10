@@ -17,15 +17,14 @@ router.get('/', async(req, res, next) => {
 
 router.get('/:robotId', async (req, res, next) => {
   try {
-    const robot = await Robot.findOne({
-      include: Project,
-      where: { id: req.params.id },
-    });
-    res.send(robot);
+  const robot = await Robot.findByPk(req.params.robotId, {
+    include: [{ model: Project }]
+  })
+  res.json(robot);
   } catch (error) {
     next(error);
   }
 });
 
-
 module.exports = router;
+
