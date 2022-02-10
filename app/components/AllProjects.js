@@ -1,22 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchProjects } from "../redux/projects";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllProjects extends React.Component {
   render() {
-    return <div />;
-  }
+    return (
+    <div className='all-projects'>
+    <h1>{this.props.project.title}</h1>
+    <div>{this.props.project.deadline}</div>
+  </div>
+    )}
 }
 
-const mapState = () => {
-  return {};
+const mapState = (state) => {
+  return {
+    projects: state.projects,
+  };
 };
 
-const mapDispatch = () => {
-  return {};
+const mapDispatch = (dispatch) => {
+  return {
+    fetchProjects: () => dispatch(fetchProjects()),
+  };
 };
 
 export default connect(mapState, mapDispatch)(AllProjects);

@@ -19,8 +19,10 @@ const Routes = () => {
         </nav>
         <main>
           <div>
-            <Route path='/robots' component={Robot} />
-            <Route path='/projects' component={Project} />
+            <Switch>
+            <Route exact path='/robots' component={AllRobots} />
+            <Route exact path='/projects' component={AllProjects} />
+            </Switch>
           </div>
           <h1>
             Welcome to StackBot Project Management: your robot employees are
@@ -28,6 +30,7 @@ const Routes = () => {
           </h1>
           <p>This seems like a nice place to get started with some Routes!</p>
         </main>
+        
       </div>
     </Router>
   );
