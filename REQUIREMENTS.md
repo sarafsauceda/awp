@@ -8,8 +8,8 @@ The requirements below are broken into separate **tiers**, which model the way w
 
 #### Frontend
 
-- [ ] Write a component to display a list of all robots (at least their names and imageUrls)
-- [ ] Write a component to display a list of all projects (at least their titles and deadlines)
+- [ x ] Write a component to display a list of all robots (at least their names and imageUrls)
+- [x  ] Write a component to display a list of all projects (at least their titles and deadlines)
 - [ x ] Write a robots sub-reducer to manage robots in your Redux store
 - [ x ] Write a projects sub-reducer to manage projects in your Redux store
 - [ ] Display the AllRobots component when the url matches `/robots`
