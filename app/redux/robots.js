@@ -29,19 +29,19 @@ export const fetchRobots = () => {
 // added to the Redux store with combineReducers
 const initialState = []
 
-// export const robotsReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case SET_ROBOTS:
-//       return {...state, allRobots: action.robots};
-//     default:
-//     return state
-// }
-// }
-
-export default function robotsReducer(state = initialState, action) {
+export default function robotsReducer (state = initialState, action) {
   switch (action.type) {
     case SET_ROBOTS:
       return action.robots
-      default: return state
-  }
+    default:
+    return state
 }
+}
+
+// export default function robotsReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case SET_ROBOTS:
+//       return action.robots
+//       default: return state
+//   }
+// }

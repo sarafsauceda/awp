@@ -29,6 +29,9 @@ const Routes = () => {
             awaiting assignments!
           </h1>
           <p>This seems like a nice place to get started with some Routes!</p>
+          <div className='list'>
+            {/* <AllProjects /> */}
+          </div>
         </main>
         
       </div>
