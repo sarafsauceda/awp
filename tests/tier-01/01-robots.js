@@ -126,14 +126,14 @@ describe('Tier One: Robots', () => {
       fakeStore = mockStore(initialState);
     });
     describe('set/fetch robots', () => {
-      it('setRobots action creator', () => {
+      xit('setRobots action creator', () => {
         expect(setRobots(robots)).to.deep.equal({
           type: 'SET_ROBOTS',
           robots,
         });
       });
 
-      it('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
+      xit('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
         await fakeStore.dispatch(fetchRobots());
         const [getRequest] = mockAxios.history.get;
         expect(getRequest).to.not.equal(undefined);
@@ -157,7 +157,7 @@ describe('Tier One: Robots', () => {
         throw new Error('replace this error with your own test');
       });
 
-      it('reduces on SET_ROBOTS action', () => {
+      xit('reduces on SET_ROBOTS action', () => {
         const action = { type: 'SET_ROBOTS', robots };
 
         const prevState = testStore.getState();
