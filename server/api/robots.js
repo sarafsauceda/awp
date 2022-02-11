@@ -32,28 +32,34 @@ router.get('/:robotId', async (req, res, next) => {
 
 // POST /robots create new robot
 router.post('/', async (req, res, next) => {
-  const name = req.body.name
   try {
-    const newRobot = await Robot.create(
-      { name: name }
-      )
-      console.log('new robot', newRobot)
+    res.status(201).send(await Robot.create(req.body));
   } catch (error) {
     next(error);
   }
 });
 
-// const newEmailRecord = await EBookSignup.create({ email: email });
-//         console.log(newEmailRecord);
-//         res.status(201).end(); // Successful signup!
-//need to add this in line 24? as: 'RobotProject'
 
-//  const robot = await Robot.findByPk(req.params.robotId, {
-//   include: [{ model: Project }]
-// })
+//DELETE /Remove robots
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const robot = await Robot.findByPk(req.params.id);
+    await robot.destroy();
+    res.send(robot);
+  } catch (error) {
+    next(error);
+  }
+});
 
-// res.status(201).send(await Robot.create(req.body));
-// const newRobot = await Robot.create({
-//   robotName: robotName
+// PUT /api/robots/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const robot = await Robot.findByPk(req.params.id);
+    res.send(await robot.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
 

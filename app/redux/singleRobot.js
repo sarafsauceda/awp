@@ -14,7 +14,7 @@ export const getSingleRobot = (robotId) => {
     console.log('hhhhh', robotId)
     try {
       const {data} = await axios.get(`/api/robots/${robotId}`)
-      console.log('data',data)
+      console.log('data', data)
       dispatch(gotSingleRobot(data))
     } catch (err) {
       console.log(err)

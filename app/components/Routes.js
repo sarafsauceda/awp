@@ -10,6 +10,7 @@ import AllProjects from './AllProjects';
 import SingleRobot from './SingleRobot';
 import SingleProject from './SingleProject';
 import CreateRobot from './CreateRobot'
+import CreateProject from './CreateProject'
 
 const Routes = () => {
   return (
@@ -19,7 +20,8 @@ const Routes = () => {
         <nav>Welcome!
           <Link to='/robots'>Robots</Link>
           <Link to='/projects'>Projects</Link>
-          
+          <Link to='/robots/create'>Create A New Robot</Link>
+          <Link to='/projects/create'>Create A New Robot</Link>
         </nav>
         <main>
           <div>
@@ -29,6 +31,7 @@ const Routes = () => {
             <Route exact path='/robots/:robotId' component={SingleRobot} />
             <Route exact path='/projects/:projectId' component={SingleProject} />
             <Route path='/robots/create' component={CreateRobot} />
+            <Route path='/projects/create' component={CreateProject} />
             </Switch>
           </div>
           <h1>
