@@ -3,7 +3,7 @@ const { db, Project, Robot } = require('./server/db');
 
 const robots = [
   { id: 1, name: 'R2-D2', imageUrl: '/images/r2d2.png' },
-  { id: 2, name: 'WALL-E', imageUrl: '/images/walle.jpeg' },
+  { id: 2, name: 'WALL-E', imageUrl: '/images/walle.jpeg'},
 ];
 
 // const differentRobots = [
@@ -42,16 +42,20 @@ const seed = async () => {
       // seed your database here!
     // return Robot.bulkCreate(robots)
     // .then(() => Project.bulkCreate(projects))
-    await Promise.all(robots.map(robot => {
+    const returnrobots = await Promise.all(robots.map(robot => {
       return Robot.create(robot);
     }))
-    await Promise.all(projects.map(project => {
+    const returnprojects = await Promise.all(projects.map(project => {
       return Project.create(project);
     }))
+    await returnrobots[0].addProject(returnprojects[0])
   } catch (err) {
     console.log(red(err));
   }
 };
+
+
+
 
 module.exports = seed;
 // If this module is being required from another module, then we just export the
@@ -69,3 +73,6 @@ if (require.main === module) {
       db.close();
     });
 }
+
+
+

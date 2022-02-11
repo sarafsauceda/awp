@@ -18,14 +18,15 @@ const Routes = () => {
         <nav>Welcome!
           <Link to='/robots'>Robots</Link>
           <Link to='/projects'>Projects</Link>
+          
         </nav>
         <main>
           <div>
             <Switch>
             <Route exact path='/robots' component={AllRobots} />
             <Route exact path='/projects' component={AllProjects} />
-            <Route exact path='/robots/:id(\d+)' component={SingleRobot} />
-            <Route exact path='/projects/:id(\d+)' component={SingleProject} />
+            <Route exact path='/robots/:robotId' component={SingleRobot} />
+            <Route exact path='/projects/:projectId' component={SingleProject} />
             </Switch>
           </div>
           <h1>
