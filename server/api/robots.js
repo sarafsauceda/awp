@@ -30,10 +30,25 @@ router.get('/:robotId', async (req, res, next) => {
   }
 });
 
+//POST /robots create new robot
+router.post('/', async (req, res, next) => {
+  const robotName = req.body.robotName
+  try {
+    const newRobot = await Robot.create({
+      robotName: robotName
+    })
+  } catch (error) {
+    next(error);
+  }
+});
+
 //need to add this in line 24? as: 'RobotProject'
 
 //  const robot = await Robot.findByPk(req.params.robotId, {
 //   include: [{ model: Project }]
 // })
+
+// res.status(201).send(await Robot.create(req.body));
+
 module.exports = router;
 

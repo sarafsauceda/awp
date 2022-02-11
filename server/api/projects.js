@@ -26,4 +26,13 @@ router.get('/:projectId', async (req, res, next) => {
   }
 });
 
+// POST /projects create new project
+router.post('/', async (req, res, next) => {
+  try {
+    res.status(201).send(await Project.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
