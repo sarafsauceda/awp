@@ -32,10 +32,3 @@ export default function singleRobotReducer(state = initialState, action) {
       return state;
   }
 }
-
-// export const  = () => async (dispatch) => {
-  
-//   const { data } = await axios.get(`/api/robots/${robotId}`);
-//   console.log('data', data)
-//   dispatch(gotSingleRobot(data));
-// };

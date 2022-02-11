@@ -4,13 +4,14 @@ import axios from 'axios';
 const GET_SINGLE_PROJECT = 'GET_SINGLE_PROJECT';
 
 //action creator
-const gotSingleProject = (projectId) => ({
+const gotSingleProject = (project) => ({
     type: GET_SINGLE_PROJECT,
-    projectId
+    project
   })
 
 export const getSingleProject = (projectId) => {
   return async (dispatch) => {
+      console.log('sfkldfl;', projectId)
     try {
       const {data} = await axios.get(`/api/projects/${projectId}`)
       dispatch(gotSingleProject(data))
