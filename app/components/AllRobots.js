@@ -13,12 +13,14 @@ export class AllRobots extends React.Component {
 
   render() {
     const { robots } = this.props;
-    console.log("robots!!!", robots);
+    console.log("not this one!!", robots);
     return (
       <div>
         {robots.map((robot) => (
           <div key={robot.id}>
-            <Link to={`/robots/${robot.id}`}>Robots</Link>
+             <h2>Robot Name: {robot.name}</h2>
+            <Link to={`/robots/${robot.id}`}>Robot</Link>
+            {/* <img src={robot.imageUrl} /> */}
           </div>
         ))}
       </div>

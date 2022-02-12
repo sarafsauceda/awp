@@ -5,14 +5,14 @@ import { getSingleProject } from '../redux/singleProject'
 class SingleProject extends React.Component {
 
   componentDidMount() {
-    console.log('text', this.state)
-    console.log('hello', this.props.match.params.projectId)
+    // console.log('text', this.state)
+    // console.log('hello', this.props.match.params.projectId)
     this.props.getSingleProject(this.props.match.params.projectId);
   }
 
   render() {
     const {singleProject} = this.props;
-    console.log('hiiiii', singleProject)
+    //console.log('hiiiii', singleProject)
     return (
       <div>
         <h1>
@@ -29,7 +29,7 @@ class SingleProject extends React.Component {
     }}
 
   const mapState = (state) => {
-      console.log("state", state);
+      //console.log("state", state);
       return {
         singleProject: state.singleProject,
       };

@@ -5,14 +5,14 @@ import { getSingleRobot } from '../redux/singleRobot'
 class SingleRobot extends React.Component {
 
   componentDidMount() {
-    console.log('text', this.state)
-    console.log('hello', this.props.match.params.robotId)
+    // console.log('text', this.state)
+    // console.log('hello', this.props.match.params.robotId)
     this.props.getSingleRobot(this.props.match.params.robotId);
   }
 
   render() {
     const {singleRobot} = this.props;
-    // console.log('hiiiii', singleRobot)
+    //console.log('hiiiii', singleRobot)
     return (
       <div>
         

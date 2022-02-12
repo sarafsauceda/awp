@@ -37,11 +37,3 @@ export default function robotsReducer (state = initialState, action) {
     return state
 }
 }
-
-// export default function robotsReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case SET_ROBOTS:
-//       return action.robots
-//       default: return state
-//   }
-// }

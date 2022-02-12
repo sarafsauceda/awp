@@ -3,11 +3,11 @@ import { createRobot } from "../redux/createRobot";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-class CreateRobot extends Component {
+class CreateRobot extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      name: ' ',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,7 +18,6 @@ class CreateRobot extends Component {
     this.setState({
       [evt.target.name]: evt.target.value,
     });
-    console.log(this.state);
   }
 
   handleSubmit(evt) {
@@ -28,11 +27,12 @@ class CreateRobot extends Component {
 
   render() {
     const { name } = this.state;
+   // console.log('name', this.state)
     const { handleSubmit, handleChange } = this;
-    console.log('sara', this.state);
+    console.log('sara');
     return (
       <form id="robot-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Robot Name:</label>
+        <label htmlFor="name">Add New Robot:</label>
         <input name="name" onChange={handleChange} value={name} />
 
         <button type="submit">Submit</button>
@@ -43,7 +43,7 @@ class CreateRobot extends Component {
 }
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  createRobot: (robot) => dispatch(createRobot(robot, history)),
+    createRobot: (robot) => dispatch(createRobot(robot, history)),
 });
 
 export default connect(null, mapDispatchToProps)(CreateRobot);

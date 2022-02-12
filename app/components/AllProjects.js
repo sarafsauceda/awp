@@ -19,8 +19,8 @@ export class AllProjects extends React.Component {
         {projects.map((project) => {
           return (
             <div key={project.id}>
-              <h1>{project.title}</h1>
-              <div>{project.deadline}</div>
+              <h2>Project Title: {project.title}</h2>
+              <div><h3>Project Deadline: {project.deadline}</h3></div>
               <Link to={`/projects/${project.id}`}>Projects</Link>
             </div>
           );

@@ -31,7 +31,7 @@ router.get('/:robotId', async (req, res, next) => {
 });
 
 // POST /robots create new robot
-router.post('/', async (req, res, next) => {
+router.post('/create', async (req, res, next) => {
   try {
     res.status(201).send(await Robot.create(req.body));
   } catch (error) {

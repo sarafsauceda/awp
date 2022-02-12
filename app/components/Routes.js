@@ -15,13 +15,12 @@ import CreateProject from './CreateProject'
 const Routes = () => {
   return (
     <Router>
-     
       <div>
         <nav>Welcome!
           <Link to='/robots'>Robots</Link>
           <Link to='/projects'>Projects</Link>
-          <Link to='/robots/create'>Create A New Robot</Link>
-          <Link to='/projects/create'>Create A New Robot</Link>
+          <Link to='/robots/new/create'>Create A New Robot</Link>
+          <Link to='/projects/new/create'>Create A New Project</Link>
         </nav>
         <main>
           <div>
@@ -30,8 +29,8 @@ const Routes = () => {
             <Route exact path='/projects' component={AllProjects} />
             <Route exact path='/robots/:robotId' component={SingleRobot} />
             <Route exact path='/projects/:projectId' component={SingleProject} />
-            <Route path='/robots/create' component={CreateRobot} />
-            <Route path='/projects/create' component={CreateProject} />
+            <Route exact path='/robots/new/create' component={CreateRobot} />
+            <Route path='/projects/new/create' component={CreateProject} />
             </Switch>
           </div>
           <h1>
@@ -40,10 +39,10 @@ const Routes = () => {
           </h1>
           <p>This seems like a nice place to get started with some Routes!</p>
           <div className='list'>
-            {/* <AllProjects /> */}
+            {/* <AllProjects />
+            <AllRobots /> */}
           </div>
         </main>
-        
       </div>
     </Router>
   );
