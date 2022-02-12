@@ -18,9 +18,11 @@ export class AllRobots extends React.Component {
       <div>
         {robots.map((robot) => (
           <div key={robot.id}>
-             <h2>Robot Name: {robot.name}</h2>
-            <Link to={`/robots/${robot.id}`}>Robot</Link>
-            {/* <img src={robot.imageUrl} /> */}
+            <Link to={`/robots/${robot.id}`}>
+             <h2>{robot.name}</h2>
+             <img src={robot.imageUrl} />
+            </Link>
+            
           </div>
         ))}
       </div>

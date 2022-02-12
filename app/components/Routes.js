@@ -11,6 +11,7 @@ import SingleRobot from './SingleRobot';
 import SingleProject from './SingleProject';
 import CreateRobot from './CreateRobot'
 import CreateProject from './CreateProject'
+import EditRobot from './EditRobot'
 
 const Routes = () => {
   return (
@@ -26,21 +27,25 @@ const Routes = () => {
           <div>
             <Switch>
             <Route exact path='/robots' component={AllRobots} />
+            <Route exact path='/robots' component={EditRobot} />
             <Route exact path='/projects' component={AllProjects} />
             <Route exact path='/robots/:robotId' component={SingleRobot} />
+            <Route exact path='/robots/:robotId' component={EditRobot} />
             <Route exact path='/projects/:projectId' component={SingleProject} />
             <Route exact path='/robots/new/create' component={CreateRobot} />
             <Route path='/projects/new/create' component={CreateProject} />
             </Switch>
           </div>
-          <h1>
+          {/* <h1>
             Welcome to StackBot Project Management: your robot employees are
             awaiting assignments!
-          </h1>
-          <p>This seems like a nice place to get started with some Routes!</p>
+          </h1> */}
+          {/* <p>This seems like a nice place to get started with some Routes!</p> */}
           <div className='list'>
-            {/* <AllProjects />
-            <AllRobots /> */}
+            <AllProjects />
+            <AllRobots />
+            <CreateProject />
+            <CreateRobot />
           </div>
         </main>
       </div>
