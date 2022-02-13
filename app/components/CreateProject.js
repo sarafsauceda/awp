@@ -29,9 +29,9 @@ class CreateProject extends React.Component {
 
   render() {
     const { title } = this.state;
-    console.log('title', title)
+    //console.log('title', title)
     const { handleSubmit, handleChange } = this;
-    console.log('sara', this.state);
+    //console.log('sara', this.state);
     return (
       <form id="project-form" onSubmit={handleSubmit}>
         <label htmlFor="title">Add New Project:</label>

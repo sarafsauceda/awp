@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
 import { Link } from "react-router-dom";
+import CreateProject from "./CreateProject";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -13,9 +14,10 @@ export class AllProjects extends React.Component {
 
   render() {
     const { projects } = this.props;
-    console.log("projects", projects);
+    console.log("allprojects", projects);
     return (
       <div>
+        <CreateProject />
         {projects.map((project) => {
           return (
             <div key={project.id}>

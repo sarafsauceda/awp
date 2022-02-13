@@ -33,7 +33,10 @@ router.get('/:robotId', async (req, res, next) => {
 // POST /robots create new robot
 router.post('/', async (req, res, next) => {
   try {
-    res.status(201).send(await Robot.create(req.body));
+    // res.status(201).send(await Robot.create(req.body));
+   const newRobot = (await Robot.create(req.body));
+   console.log('newtobots', newRobot)
+    res.redirect('/')
   } catch (error) {
     next(error);
   }
@@ -41,10 +44,11 @@ router.post('/', async (req, res, next) => {
 
 
 //DELETE /Remove robots
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:robotId', async (req, res, next) => {
   try {
-    const robot = await Robot.findByPk(req.params.id);
+    const robot = await Robot.findByPk(req.params.robotId);
     await robot.destroy();
+    //res.sendStatus(204);
     res.send(robot);
   } catch (error) {
     next(error);
@@ -52,14 +56,29 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 // PUT /api/robots/:id
-router.put('/:id', async (req, res, next) => {
+
+router.put("/:robotId", async (req, res, next) => {
   try {
-    const robot = await Robot.findByPk(req.params.id);
-    res.send(await robot.update(req.body));
-  } catch (error) {
-    next(error);
+    const robot = await Robot.update(req.body.robot, {
+      where: { id: req.params.robotId },
+    });
+    res.send(robot);
+  } catch (ex) {
+    next(ex);
   }
 });
+// router.put('/:robotId', async (req, res, next) => {
+//   try {
+//     const robot = await Robot.update(req.body.robot, {
+//       where: { id: req.params.robotId },
+//     });
+//     res.send(robot);
+//     // const robot = await Robot.findByPk(req.params.id);
+//     // res.send(await robot.update(req.body));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;
 

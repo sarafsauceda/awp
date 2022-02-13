@@ -29,17 +29,31 @@ router.get('/:projectId', async (req, res, next) => {
 // POST /projects create new project
 router.post('/', async (req, res, next) => {
   try {
-    res.status(201).send(await Project.create(req.body));
+    //res.status(201).send(await Project.create(req.body));
+    const newProject = (await Project.create(req.body));
+   console.log('newprojects', newProject)
+    res.redirect('/projects')
   } catch (error) {
     next(error);
   }
 });
 
 //DELETE /Remove projects
-router.delete('/:id', async (req, res, next) => {
+// router.delete('/:id', async (req, res, next) => {
+//   try {
+//     const project = await Project.findByPk(req.params.id);
+//     await project.destroy();
+//     res.send(project);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+router.delete('/:projectId', async (req, res, next) => {
   try {
-    const project = await Project.findByPk(req.params.id);
+    const project = await Robot.findByPk(req.params.projectId);
     await project.destroy();
+    //res.sendStatus(204);
     res.send(project);
   } catch (error) {
     next(error);

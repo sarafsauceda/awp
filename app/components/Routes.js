@@ -27,13 +27,14 @@ const Routes = () => {
           <div>
             <Switch>
             <Route exact path='/robots' component={AllRobots} />
-            <Route exact path='/robots' component={EditRobot} />
+            
             <Route exact path='/projects' component={AllProjects} />
             <Route exact path='/robots/:robotId' component={SingleRobot} />
             <Route exact path='/robots/:robotId' component={EditRobot} />
+            {/* <Route exact path='/robots' component={EditRobot} /> */}
             <Route exact path='/projects/:projectId' component={SingleProject} />
-            <Route exact path='/robots/new/create' component={CreateRobot} />
-            <Route path='/projects/new/create' component={CreateProject} />
+            <Route exact path='/robots' component={CreateRobot} />
+            <Route exact path='/projects' component={CreateProject} />
             </Switch>
           </div>
           {/* <h1>
@@ -44,8 +45,8 @@ const Routes = () => {
           <div className='list'>
             <AllProjects />
             <AllRobots />
-            <CreateProject />
-            <CreateRobot />
+            {/* <CreateProject />
+            <CreateRobot /> */}
           </div>
         </main>
       </div>

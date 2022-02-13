@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '../public')))
 
 app.use('/api', require('./api')) // include our routes!
+app.use("/api/robots", require("./api/robots"));
+app.use("/api/projects", require("./api/projects"));
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))

@@ -15,13 +15,12 @@ const _createRobot = (robot) => {
 // THUNK CREATORS
 
 export const createRobot = (robot) => {
-    console.log('herroo')
+    console.log('wuoer', robot)
   return async (dispatch) => {
       try {
     const { data } = await axios.post('/api/robots', robot);
-    // console.log('created', data)
     dispatch(_createRobot(data));
-    //history.push('/');
+    history.push('/');
   } catch (err) {
       console.log(err)
   }

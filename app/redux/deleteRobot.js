@@ -4,19 +4,30 @@
 // const DELETE_ROBOT = 'DELETE_ROBOT';
 
 // // action creators
-// const _deleteRobot = (robot) => {
+// const _deleteRobot = (robotId) => {
+//   console.log('please work', robotId)
 //     return {
 //       type: DELETE_ROBOT,
-//       robot
+//       robotId
 //     };
 //   };
 
 //   //thunk creator
-//   export const deleteRobot = (id, history) => {
+//   // export const deleteRobot = (robotId, history) => {
+//   //   console.log('robotid', robotId)
+//   //   return async (dispatch) => {
+//   //     const {data} = await axios.delete(`/api/robots/${id}`);
+//   //     console.log('theeh', data)
+//   //     dispatch(_deleteRobot(data));
+//   //     history.push('/');
+//   //   };
+//   // };
+
+//   export const deleteRobot = (robotId) => {
+//     console.log('pkease', robotId)
 //     return async (dispatch) => {
-//       const {data: robot} = await axios.delete(`/api/robots/${id}`);
-//       dispatch(_deleteRobot(robot));
-//       history.push('/');
+//       await axios.delete(`/api/robots/${robotId}`);
+//       dispatch(_deleteRobot(robotId));
 //     };
 //   };
 
