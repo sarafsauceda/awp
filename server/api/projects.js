@@ -51,7 +51,7 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:projectId', async (req, res, next) => {
   try {
-    const project = await Robot.findByPk(req.params.projectId);
+    const project = await Project.findByPk(req.params.projectId);
     await project.destroy();
     //res.sendStatus(204);
     res.send(project);
@@ -61,9 +61,9 @@ router.delete('/:projectId', async (req, res, next) => {
 });
 
 // PUT /api/projecs/:id
-router.put('/:id', async (req, res, next) => {
+router.put('/:projectId', async (req, res, next) => {
   try {
-    const project = await Project.findByPk(req.params.id);
+    const project = await Project.findByPk(req.params.projectId);
     res.send(await project.update(req.body));
   } catch (error) {
     next(error);
