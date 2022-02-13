@@ -18,10 +18,11 @@ const Routes = () => {
     <Router>
       <div>
         <nav>Welcome!
+          <Link to='/'>Home</Link>
           <Link to='/robots'>Robots</Link>
           <Link to='/projects'>Projects</Link>
-          <Link to='/robots/new/create'>Create A New Robot</Link>
-          <Link to='/projects/new/create'>Create A New Project</Link>
+          {/* <Link to='/robots/new/create'>Create A New Robot</Link>
+          <Link to='/projects/new/create'>Create A New Project</Link> */}
         </nav>
         <main>
           <div>

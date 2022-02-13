@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { getSingleRobot } from '../redux/singleRobot'
+import EditRobot from './EditRobot'
 
 class SingleRobot extends React.Component {
 
@@ -15,7 +16,7 @@ class SingleRobot extends React.Component {
     //console.log('hiiiii', singleRobot)
     return (
       <div>
-        
+        {/* <EditRobot /> */}
         <h1>Name: {singleRobot.name}</h1>
       <h2>Fuel Type: {singleRobot.fuelType}</h2>
       <h2>Fuel Level:{singleRobot.fuelLevel}</h2>
@@ -28,7 +29,7 @@ class SingleRobot extends React.Component {
   
 
   const mapState = (state) => {
-      console.log("state", state);
+      console.log("singlerobotstate", state);
       return {
         singleRobot: state.singleRobot,
       };

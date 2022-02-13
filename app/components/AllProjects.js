@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
 import { Link } from "react-router-dom";
 import CreateProject from "./CreateProject";
+import { deleteProject } from '../redux/deleteProject'
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -10,6 +11,10 @@ import CreateProject from "./CreateProject";
 export class AllProjects extends React.Component {
   componentDidMount() {
     this.props.fetchProjects();
+  }
+
+  componentWillUnmount() {
+    this.props.deleteProject(this.props.match.params.projectId)
   }
 
   render() {
@@ -25,6 +30,13 @@ export class AllProjects extends React.Component {
               <h2>Project Title: {project.title}</h2>
               </Link>
               <div><h3>Project Deadline: {project.deadline}</h3>
+              <button
+            type='button'
+                  className="ms-2 "
+                  onClick={() => this.props.deleteProject(this.props.match.params.projectId)}
+                >
+                  X
+                </button>
               </div>
             </div>
           );
@@ -34,7 +46,14 @@ export class AllProjects extends React.Component {
   }
 }
 
+// const mapState = ({ robots, projects }) => {
+//   return {
+//   robots,
+//   projects,
+//   };
+//   };
 const mapState = (state) => {
+  //console.log("state", state);
   return {
     projects: state.projects,
   };
@@ -43,6 +62,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchProjects: () => dispatch(fetchProjects()),
+    deleteProject: (projectId) => dispatch(deleteProject)(projectId)
   };
 };
 
