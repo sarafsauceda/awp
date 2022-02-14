@@ -4,7 +4,6 @@ import axios from 'axios';
 const UPDATE_ROBOT = 'UPDATE_ROBOT';
 
 // action creators
-
 const _updateRobot = (robot) => {
     return {
       type: UPDATE_ROBOT,
@@ -36,4 +35,3 @@ const _updateRobot = (robot) => {
       return state
   }
   }
-  

@@ -56,17 +56,24 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 // PUT /api/robots/:id
-
 router.put('/:robotId', async (req, res, next) => {
   try {
-    const robot = await Robot.update(req.body.robot, {
-      where: { id: req.params.robotId },
-    });
-    res.send(robot);
-  } catch (ex) {
-    next(ex);
+    const robot = await Robot.findByPk(req.params.robotId);
+    res.send(await robot.update(req.body));
+  } catch (error) {
+    next(error);
   }
 });
+// router.put('/edit/:robotId', async (req, res, next) => {
+//   try {
+//     const robot = await Robot.update(req.body.robot, {
+//       where: { id: req.params.robotId },
+//     });
+//     res.send(robot);
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
 
 module.exports = router;
 

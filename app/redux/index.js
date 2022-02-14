@@ -8,9 +8,9 @@ import createProjectReducer from './createProject'
 import deleteRobotReducer from './deleteRobot'
 import deleteProjectReducer from './deleteProject'
 import updateRobotReducer from './updateRobot'
-// import updateProjectReducer from './updateProject'
-//import setProjectReducer from './project'
-//import setRobotReducer from './robot'
+import updateProjectReducer from './updateProject'
+import setProjectReducer from './project'
+import setRobotReducer from './robot'
 
 const appReducer = combineReducers({
   projects: projectsReducer,
@@ -22,9 +22,9 @@ const appReducer = combineReducers({
   deleteRobot: deleteRobotReducer,
   deleteProject: deleteProjectReducer,
   updateRobot: updateRobotReducer,
-  // updateProject: updateProjectReducer
-  // setRobot: setRobotReducer
-  // setProject: setProjectReducer
+  updateProject: updateProjectReducer,
+  setRobot: setRobotReducer,
+  setProject: setProjectReducer
 
 });
 
