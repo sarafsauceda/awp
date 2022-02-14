@@ -4,6 +4,7 @@ class EditProject extends React.Component {
     constructor() {
         super()
         this.state = {
+            title: '',
             completed: false
         }
         this.handleClick = this.handleClick.bind(this)

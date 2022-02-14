@@ -32,7 +32,6 @@ export class AllProjects extends React.Component {
                 >
                   X
               </button>
-            
             </div>
         ))}
       </div>

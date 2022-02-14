@@ -12,6 +12,7 @@ import SingleProject from './SingleProject';
 import CreateRobot from './CreateRobot'
 import CreateProject from './CreateProject'
 import EditRobot from './EditRobot'
+import EditProject from './EditProject'
 import Home from './Home'
 
 const Routes = () => {
@@ -22,8 +23,6 @@ const Routes = () => {
           <Link to='/'>Home</Link>
           <Link to='/robots'>Robots</Link>
           <Link to='/projects'>Projects</Link>
-          {/* <Link to='/robots/new/create'>Create A New Robot</Link>
-          <Link to='/projects/new/create'>Create A New Project</Link> */}
         </nav>
         <main>
           <div>
@@ -38,6 +37,8 @@ const Routes = () => {
             <Route exact path='/projects/:projectId' component={SingleProject} />
             <Route exact path='/robots' component={CreateRobot} />
             <Route exact path='/projects' component={CreateProject} />
+            <Route path='/robots/edit/:id' component={EditRobot} />
+            <Route path='/projects/edit/:id' component={EditProject} />
             </Switch>
           </div>
           {/* <h1>

@@ -1,129 +1,198 @@
-import React, { Component } from 'react';
-import { updateRobott } from '../store';
-import { connect } from 'react-redux';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
+// import React, { Component } from 'react';
+// import { deleteTodo, updateTodo } from '../store/todos';
+// import { fetchTodo, _setTodo } from '../store/todo';
+// import { connect } from 'react-redux';
 
-class UpdateRobotForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: this.props.robot ? this.props.robot.name : '',
-      fuelLevel: this.props.robot ? this.props.robot.fuelLevel : '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-  }
+// class EditTodo extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       taskName: '',
+//       assignee: ''
+//     };
 
-  componentDidUpdate(prevProps) {
-    if (!prevProps.robot && this.props.robot) {
-      const { name, fuelLEvel } =
-        this.props.robot;
-      this.setState({ name, fuelLevel });
-    }
-  }
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
 
-  handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-    });
-  }
+//   componentDidMount() {
+//     const { id } = this.props.match.params;
+//     this.props.fetchTodo(id);
+//   }
 
-  async handleSave(evt) {
-    evt.preventDefault();
-    try {
-      const { name, fuelLevel } =
-        this.state;
-      await this.props.updateRobot({
-        id: this.props.robot.id,
-        name,
-        fuelLevel
-      });
-    } catch (er) {
-      this.setState({ error: er.response.data });
-    }
-  }
+//   componentWillUnmount() {
+//     this.props.clearTodo();
+//   }
 
-  render() {
-    const { projects, props } = this.props;
-    const { name, fuelLevel } =
-      this.state;
-    const { handleChange, handleSave } = this;
+//   componentDidUpdate(prevProps) {
+//     if (prevProps.todo.id !== this.props.todo.id) {
+//       this.setState({
+//         taskName: this.props.todo.taskName || '',
+//         assignee: this.props.todo.assignee || ''
+//       });
+//     }
+//   }
 
-    return (
-      <div>
-        <Box
-          id="robot-form"
-          onSubmit={handleSave}
-          component="form"
-          sx={{
-            '& .MuiTextField-root': { m: 1, width: '50ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            required
-            label="Name"
-            name="name"
-            onChange={handleChange}
-            value={name}
-            variant="filled"
-          />
-          <TextField
-            required
-            label="fuelLevel"
-            name="fuelLevel"
-            onChange={handleChange}
-            value={fuelLevel}
-            variant="filled"
-          />
-          
-            {/* {campuses.map((campus) => {
-              return (
-                <MenuItem key={campus.id} value={campus.id}>
-                  {campus.name}
-                </MenuItem> */}
-              );
-            })}
-          </TextField>
-          <Stack spacing={2} direction="row" className="buttons">
-            <Button type="submit" variant="outlined" color="secondary">
-              Save
-            </Button>
+//   handleChange(evt) {
+//     this.setState({
+//       [evt.target.name]: evt.target.value
+//     });
+//   }
 
-            <Button
-              type="button"
-              onClick={() => props.history.push('/robots')}
-              variant="outlined"
-              color="secondary"
-            >
-              Cancel
-            </Button>
-          </Stack>
-        </Box>
-      </div>
-    );
-  }
-}
+//   handleSubmit(evt) {
+//     evt.preventDefault();
+//     this.props.updateTodo({ ...this.props.todo, ...this.state });
+//   }
 
-const mapStateToProps = (state, { props }) => {
-  const robot = state.robots.find(
-    (robot) => robot.id === props.match.params.id * 1
-  );
-  return {
-    robot,
-    ...state,
-  };
-};
+//   render() {
+//     const { assignee, taskName } = this.state;
+//     const { handleSubmit, handleChange } = this;
 
-const mapDispatchToProps = (dispatch, { history }) => {
-  return {
-    updateRobot: (robot) => dispatch(updateRobot(robot, history)),
-  };
-};
+//     return (
+//       <div>
+//         <form id='todo-form' onSubmit={handleSubmit}>
+//           <label htmlFor='taskName'>Task Name:</label>
+//           <input name='taskName' onChange={handleChange} value={taskName} />
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateRobottForm);
+//           <label htmlFor='assignee'>Assign To:</label>
+//           <input name='assignee' onChange={handleChange} value={assignee} />
+
+//           <button type='submit'>Submit</button>
+//         </form>
+//       </div>
+//     );
+//   }
+// }
+
+// const mapStateToProps = ({ todo }) => ({
+//   todo
+// });
+
+// const mapDispatchToProps = (dispatch, { history }) => ({
+//   updateTodo: (todo) => dispatch(updateTodo(todo, history)),
+//   deleteTodo: (todo) => dispatch(deleteTodo(todo, history)),
+//   fetchTodo: (id) => dispatch(fetchTodo(id)),
+//   clearTodo: () => dispatch(_setTodo({}))
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(EditTodo);
+
+// // import React, { Component } from 'react';
+// // import { updateRobot } from '../store';
+// // import { connect } from 'react-redux';
+// // import Stack from '@mui/material/Stack';
+// // import Button from '@mui/material/Button';
+// // import Box from '@mui/material/Box';
+// // import TextField from '@mui/material/TextField';
+
+// // class UpdateRobotForm extends Component {
+// //   constructor(props) {
+// //     super(props);
+// //     this.state = {
+// //       name: this.props.robot ? this.props.robot.name : '',
+// //       fuelLevel: this.props.robot ? this.props.robot.fuelLevel : '',
+// //     };
+// //     this.handleChange = this.handleChange.bind(this);
+// //     this.handleSave = this.handleSave.bind(this);
+// //   }
+
+// //   componentDidUpdate(prevProps) {
+// //     if (!prevProps.robot && this.props.robot) {
+// //       const { name, fuelLevel } =
+// //         this.props.robot;
+// //       this.setState({ name, fuelLevel });
+// //     }
+// //   }
+
+// //   handleChange(evt) {
+// //     this.setState({
+// //       [evt.target.name]: evt.target.value,
+// //     });
+// //   }
+
+// //   async handleSave(evt) {
+// //     evt.preventDefault();
+// //     try {
+// //       const { name, fuelLevel } =
+// //         this.state;
+// //       await this.props.updateRobot({
+// //         id: this.props.robot.id,
+// //         name,
+// //         fuelLevel
+// //       });
+// //     } catch (er) {
+// //       this.setState({ error: er.response.data });
+// //     }
+// //   }
+
+// //   render() {
+// //     const { projects, props } = this.props;
+// //     const { name, fuelLevel } = this.state;
+// //     const { handleChange, handleSave } = this;
+
+// //     return (
+// //       <div>
+// //         <Box
+// //           id="robot-form" onSubmit={handleSave} component="form"
+// //           sx={{
+// //             '& .MuiTextField-root': { m: 1, width: '50ch' },
+// //           }}
+// //           noValidate
+// //           autoComplete="off"
+// //         >
+// //           <TextField
+// //             required
+// //             label="Name"
+// //             name="name"
+// //             onChange={handleChange}
+// //             value={name}
+// //             variant="filled"
+// //           />
+// //           <TextField
+// //             required label="fuelLevel" name="fuelLevel" onChange={handleChange} value={fuelLevel}
+// //             variant="filled"
+// //           />
+// //           {/* )})} */}
+// //           <Stack spacing={2} direction="row" className="buttons">
+// //             <Button type="submit" variant="outlined" color="secondary">
+// //               Save
+// //             </Button>
+
+// //             <Button
+// //               type="button"
+// //               onClick={() => props.history.push('/robots')}
+// //               variant="outlined"
+// //               color="secondary"
+// //             >
+// //               Cancel
+// //             </Button>
+// //           </Stack>
+// //         </Box>
+// //       </div>
+// //     );
+// //   }
+// // }
+
+// // // const mapStateToProps = (state, { props }) => {
+// // //   const robot = state.robots.find(
+// // //     (robot) => robot.id === props.match.params.id * 1
+// // //   );
+// // //   return {
+// // //     robot,
+// // //     ...state,
+// // //   };
+// // // };
+
+// // const mapState = (state) => {
+// //   return {
+// //     ...state,
+// //   };
+// // };
+
+// // const mapDispatchToProps = (dispatch) => {
+// //   return {
+// //     updateRobot: (robot) => dispatch(updateRobot(robot)),
+// //   };
+// // };
+
+// // export default connect(mapState, mapDispatchToProps)(UpdateRobotForm);

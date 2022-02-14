@@ -50,6 +50,7 @@ const seed = async () => {
     }))
     await returnrobots[0].addProject(returnprojects[0])
     await returnrobots[1].addProject(returnprojects[1])
+    await returnrobots[2].addProject(returnprojects[2])
 
   } catch (err) {
     console.log(red(err));

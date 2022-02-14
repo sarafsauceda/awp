@@ -13,16 +13,6 @@ const _deleteRobot = (id) => {
   };
 
   //thunk creator
-  // export const deleteRobot = (robotId, history) => {
-  //   console.log('robotid', robotId)
-  //   return async (dispatch) => {
-  //     const {data} = await axios.delete(`/api/robots/${id}`);
-  //     console.log('theeh', data)
-  //     dispatch(_deleteRobot(data));
-  //     history.push('/');
-  //   };
-  // };
-
   export const deleteRobot = (id) => {
     console.log('delete,', id)
     return async (dispatch) => {
@@ -30,17 +20,6 @@ const _deleteRobot = (id) => {
       dispatch(_deleteRobot(id));
     };
   };
-
-  // export const deleteRobot = (id, history) => {
-  //   console.log('pkease', id)
-  //   return async (dispatch) => {
-  //     const {data} = await axios.delete(`/api/robots/${id}`);
-  //     dispatch(_deleteRobot(id));
-  //     history.push('/');
-  //   };
-      // await axios.delete(`/api/robots/${id}`);
-      // dispatch(_deleteRobot(id));
-  // };
 
 const initialState = []
 

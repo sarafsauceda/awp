@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { deleteRobot } from '../redux/deleteRobot';
 import { updateRobot } from '../redux/updateRobot'
 import { fetchRobots, setRobots } from '../redux/robots';
-import { setRobot, fetchRobot } from '../redux/robot'
+import { _setRobot, fetchRobot } from '../redux/robot'
 import { connect } from 'react-redux';
-// import { Button } from 'react-native'
 
 class EditRobot extends Component {
   constructor(props) {
@@ -19,8 +18,8 @@ class EditRobot extends Component {
   }
 
   componentDidMount() {
-    const { robotId } = this.props.match.params;
-    this.props.fetchRobot(robotId);
+    const { id } = this.props.match.params;
+    this.props.fetchRobot(id);
   }
 
   componentWillUnmount() {
@@ -63,15 +62,6 @@ class EditRobot extends Component {
 
           <button type='submit'>Save Changes</button>
         </form>
-        <form onSubmit={(ev) => ev.preventDefault()}>
-          <button
-          type="button"
-            className="remove"
-            onClick={() => this.props.deleteRobot(this.props.match.params.id)}
-          >
-            Remove
-          </button>
-        </form>
       </div>
     );
   }
@@ -83,9 +73,8 @@ const mapStateToProps = ({ robot }) => ({
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   updateRobot: (robot) => dispatch(updateRobot(robot, history)),
-  deleteRobot: (robot) => dispatch(deleteRobot(robot)),
-  fetchRobot: (robotId) => dispatch(fetchRobot(robotId)),
-  setRobot: () => dispatch(setRobot({}))
+  fetchRobot: (id) => dispatch(fetchRobot(id)),
+  setRobot: () => dispatch(_setRobot({}))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRobot);
