@@ -12,46 +12,44 @@ class EditProject extends React.Component {
             // completed: false
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
-    
-      componentDidMount() {
-        const { id } = this.props.match.params;
-        this.props.fetchProject(id);
-      }
-    
-      componentWillUnmount() {
-        this.props.setProject();
+        this.handleSave = this.handleSave.bind(this);
       }
     
       componentDidUpdate(prevProps) {
-        if (prevProps.project.id !== this.props.project.id) {
-          this.setState({
-            title: this.props.project.title || '',
-            // completed: this.props.completed || false
-          });
+        if (!prevProps.project && this.props.project) {
+          const { title } = this.props.project;
+          this.setState({ title });
         }
       }
     
       handleChange(evt) {
         this.setState({
-          [evt.target.title]: evt.target.value
+          [evt.target.title]: evt.target.value,
         });
       }
     
-      handleSubmit(evt) {
+      async handleSave(evt) {
         evt.preventDefault();
-        this.props.updateProject({ ...this.props.project, ...this.state });
+        try {
+          const { title } = this.state;
+          await this.props.updateProject({
+            id: this.props.project.id,
+            title
+          });
+        } catch (er) {
+          this.setState({ error: er.response.data });
+        }
       }
     
       render() {
         console.log('title', this.state)
         const { title, completed } = this.state;
-        const { handleSubmit, handleChange } = this;
+        const { handleSave, handleChange } = this;
     
         return (
           <div>
-            <form id='project-form' onSubmit={handleSubmit}>
+              <h2>Edit Project's Details</h2> 
+            <form id='project-form' onSubmit={handleSave}>
               <label htmlFor='title'>Project Title:</label>
               <input title='title' onChange={handleChange} value={title} />    
               <button type='submit'>Save Changes</button>

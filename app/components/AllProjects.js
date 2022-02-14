@@ -19,6 +19,7 @@ export class AllProjects extends React.Component {
     return (
       <div>
         <CreateProject />
+        <h1><b>Projects:</b></h1>
         {projects.map(( { id, title, deadline }) => (
             <div key={id}>
               <Link to={`/projects/${id}`}>

@@ -14,13 +14,19 @@ export class AllRobots extends React.Component {
     this.props.fetchRobots();
   }
 
+  removeRobot(removedRobot) {
+    this.setState({
+      robot: removedRobot
+    })
+  }
   render() {
     const { robots } = this.props;
 
     return (
       <div>
+        <h1>Welcome! Here are all robots and all projects:</h1>
         <CreateRobot />
-        {/* <EditRobot /> */}
+        <h1><b>Robots:</b></h1>
         {robots.map(( { id, name, imageUrl }) => (
           <div key={id}>
             <Link to={`/robots/${id}`}>
