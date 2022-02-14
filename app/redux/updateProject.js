@@ -14,10 +14,10 @@ const _updateProject = (project) => {
   // THUNK CREATORS
   export const updateProject = (project, history) => {
     return async (dispatch) => {
-      const { data: updated } = await axios.put(`/api/projects/${project.id}`, {
-          project,
-      });
-      dispatch(_updateProject(updated));
+      console.log('project inside thunk', project)
+      const { data } = await axios.put(`/api/projects/${project.id}`);
+      console.log('data', data)
+      dispatch(_updateProject(data));
       history.push('/');
     };
   };

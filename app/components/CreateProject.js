@@ -34,7 +34,6 @@ class CreateProject extends React.Component {
       <form id="project-form" onSubmit={handleSubmit}>
         <label htmlFor="title">Add New Project:</label>
         <input title="title" onChange={handleChange} value={title} />
-
         <button type="submit">Submit</button>
         <Link to="/">Cancel</Link>
       </form>
@@ -42,8 +41,8 @@ class CreateProject extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, { history }) => ({
-    createProject: (project) => dispatch(createProject(project, history)),
+const mapDispatchToProps = (dispatch) => ({
+    createProject: (project) => dispatch(createProject(project)),
 });
 
 export default connect(null, mapDispatchToProps)(CreateProject);

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchRobots } from "../redux/robots";
-import { Link } from "react-router-dom";
+import { Link, Badge } from "react-router-dom";
 import CreateRobot from "./CreateRobot";
 import EditRobot from "./EditRobot";
 import { deleteRobot } from "../redux/deleteRobot";
@@ -24,15 +24,18 @@ export class AllRobots extends React.Component {
 
     return (
       <div>
-        <h1>Welcome! Here are all robots and all projects:</h1>
+        
         <CreateRobot />
         <h1><b>Robots:</b></h1>
-        {robots.map(( { id, name, imageUrl }) => (
+        {robots.map(( { id, name, imageUrl, projects }) => (
           <div key={id}>
             <Link to={`/robots/${id}`}>
              <h2>{name}</h2>
              <img src={imageUrl} />
             </Link>
+            {/* <Badge variant='primary' pill>
+              ({projects ? projects.length : 0 } projects)
+            </Badge> */}
             <button
             type="button"
                   className="ms-2 "

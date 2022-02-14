@@ -12,7 +12,13 @@ class EditProject extends React.Component {
             // completed: false
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleSave = this.handleSave.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+      componentDidMount() {
+        this.props.fetchProject(this.props.match.params.id)
+        console.log('this.fetch', this.props.match.params.id )
+        console.log('second', this.props)
       }
     
       componentDidUpdate(prevProps) {
@@ -28,28 +34,34 @@ class EditProject extends React.Component {
         });
       }
     
-      async handleSave(evt) {
+      handleSubmit(evt) {
         evt.preventDefault();
-        try {
-          const { title } = this.state;
-          await this.props.updateProject({
-            id: this.props.project.id,
-            title
-          });
-        } catch (er) {
-          this.setState({ error: er.response.data });
-        }
+        this.props.updateProject({ ...this.props.setProject, ...this.state });
+        // console.log('handlesubmit react component', { ...this.props.project, ...this.state} )
+        console.log('this.props.project', this.props)
       }
+    //   async handleSave(evt) {
+    //     evt.preventDefault();
+    //     try {
+    //       const { title } = this.state;
+    //       await this.props.updateProject({
+    //         id: this.props.project.id,
+    //         title
+    //       });
+    //     } catch (er) {
+    //       this.setState({ error: er.response.data });
+    //     }
+    //   }
     
       render() {
         console.log('title', this.state)
         const { title, completed } = this.state;
-        const { handleSave, handleChange } = this;
+        const { handleSubmit, handleChange } = this;
     
         return (
           <div>
               <h2>Edit Project's Details</h2> 
-            <form id='project-form' onSubmit={handleSave}>
+            <form id='project-form' onSubmit={handleSubmit}>
               <label htmlFor='title'>Project Title:</label>
               <input title='title' onChange={handleChange} value={title} />    
               <button type='submit'>Save Changes</button>
@@ -59,14 +71,14 @@ class EditProject extends React.Component {
       }
     }
     
-    const mapStateToProps = ({ project }) => ({
-      project
+    const mapStateToProps = ({ setProject }) => ({
+      setProject
     });
     
     const mapDispatchToProps = (dispatch, { history }) => ({
       updateProject: (project) => dispatch(updateProject(project, history)),
       fetchProject: (id) => dispatch(fetchProject(id)),
-      setProject: () => dispatch(_setProject({}))
+    //   setProject: () => dispatch(_setProject({}))
     });
     
     export default connect(mapStateToProps, mapDispatchToProps)(EditProject);

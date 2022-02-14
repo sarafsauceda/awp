@@ -21,7 +21,6 @@ export const createRobot = (robot) => {
     const { data } = await axios.post('/api/robots', robot);
     console.log('lkkkk', data)
     dispatch(_createRobot(data));
-    history.push('/');
   } catch (err) {
       console.log(err)
   }

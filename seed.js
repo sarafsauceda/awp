@@ -2,8 +2,9 @@ const { green, red } = require('chalk');
 const { db, Project, Robot } = require('./server/db');
 
 const robots = [
-  { id: 1, name: 'R2-D2', imageUrl: '/images/r2d2.png' },
-  { id: 2, name: 'WALL-E', imageUrl: '/images/walle.jpeg'},
+  { id: 1, name: 'R2-D2', imageUrl: 'https://media.istockphoto.com/photos/little-robot-waving-hand-cute-robot-isolated-on-white-background-3d-picture-id1250677553?k=20&m=1250677553&s=170667a&w=0&h=bp1jmhQnsoto6npuqHARe9z5UkZIaF560ScMmxi9CSo=' },
+  { id: 2, name: 'WALL-E', imageUrl: 'https://media.istockphoto.com/photos/little-robot-waving-hand-cute-robot-isolated-on-white-background-3d-picture-id1250677553?k=20&m=1250677553&s=170667a&w=0&h=bp1jmhQnsoto6npuqHARe9z5UkZIaF560ScMmxi9CSo='},
+  { id: 3, name: 'Howie', imageUrl: 'https://media.istockphoto.com/photos/little-robot-waving-hand-cute-robot-isolated-on-white-background-3d-picture-id1250677553?k=20&m=1250677553&s=170667a&w=0&h=bp1jmhQnsoto6npuqHARe9z5UkZIaF560ScMmxi9CSo='}
 ];
 
 // const differentRobots = [

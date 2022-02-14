@@ -10,8 +10,10 @@ export const _setProject = (project) => {
 };
 
 export const fetchProject = (id) => {
+  console.log('id', id)
   return async (dispatch) => {
     const { data: project } = await axios.get(`/api/projects/${id}`);
+    console.log('projects..', project)
     dispatch(_setProject(project));
   };
 };

@@ -41,8 +41,8 @@ class CreateRobot extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, { history }) => ({
-    createRobot: (robot) => dispatch(createRobot(robot, history)),
+const mapDispatchToProps = (dispatch) => ({
+    createRobot: (robot) => dispatch(createRobot(robot)),
 });
 
 export default connect(null, mapDispatchToProps)(CreateRobot);

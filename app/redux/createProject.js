@@ -11,11 +11,11 @@ const _createProject = (project) => {
   };
 };
 
-export const createProject = (project, history) => {
+export const createProject = (project) => {
   return async (dispatch) => {
-    const { data: created } = await axios.post("/api/projects", project);
+    const { data: created } = await axios.post('/api/projects', project);
     dispatch(_createProject(created));
-    history.push("/");
+    // history.push("/");
   };
 };
 
