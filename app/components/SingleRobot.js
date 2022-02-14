@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSingleRobot } from "../redux/singleRobot";
 import EditRobot from "./EditRobot";
-import UpdateRobotForm from "./RobotForm";
+// import UpdateRobotForm from "./RobotForm";
 import { deleteRobot } from "../redux/deleteRobot";
 import { Link } from "react-router-dom";
 

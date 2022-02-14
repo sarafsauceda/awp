@@ -16,7 +16,9 @@ const _updateRobot = (robot) => {
     return async (dispatch) => {
       const { data: updated } = await axios.put(`/api/robots/${robot.id}`, {
           robot,
+          
       })
+      console.log(updated)
       dispatch(_updateRobot(updated));
       history.push('/');
     };

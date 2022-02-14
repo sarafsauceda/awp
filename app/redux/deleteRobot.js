@@ -16,8 +16,10 @@ const _deleteRobot = (id) => {
   export const deleteRobot = (id) => {
     console.log('delete,', id)
     return async (dispatch) => {
-      await axios.delete(`/api/robots/${id}`);
-      dispatch(_deleteRobot(id));
+      
+      const {data} = await axios.delete(`/api/robots/${id}`);
+      console.log('data', data)
+      dispatch(_deleteRobot(data));
     };
   };
 

@@ -9,7 +9,7 @@ The requirements below are broken into separate **tiers**, which model the way w
 #### Frontend
 
 - [ x ] Write a component to display a list of all robots (at least their names and imageUrls)
-- [x  ] Write a component to display a list of all projects (at least their titles and deadlines)
+- [ x ] Write a component to display a list of all projects (at least their titles and deadlines)
 - [ x ] Write a robots sub-reducer to manage robots in your Redux store
 - [ x ] Write a projects sub-reducer to manage projects in your Redux store
 - [ x ] Display the AllRobots component when the url matches `/robots`
@@ -86,7 +86,7 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 - [ x ] Write a component to display a form for adding a new project that contains _at least_ an input for title
 - [ x ] Display this component as part of the all-projects view, alongside the list of projects
 - Submitting the form with valid data should:
-  - [x  ] Make an AJAX request that causes the new project to be saved to the database
+  - [ x ] Make an AJAX request that causes the new project to be saved to the database
   - [ ] Add the new project to the list of projects without needing to refresh the page
 
 #### Backend
@@ -161,7 +161,7 @@ Congrats! You have completed your fifth vertical slice! Make sure to `commit -m 
 #### Finishing Touches
 
 - [ ] If a user attempts to add a new robot or project without a required field, a helpful message should be displayed
-- [ ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
+- [ x ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
 - [ ] If a user attempts to view a robot/project that doesn't exist, a helpful message should be displayed
 - [ ] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [ ] Overall, the app is spectacularly styled and visually stunning

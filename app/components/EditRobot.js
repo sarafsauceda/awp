@@ -28,6 +28,7 @@ class EditRobot extends Component {
 
   componentDidUpdate(prevProps) {
     console.log('prevprops', prevProps)
+    
     if (prevProps.robot.id !== this.props.robot.id) {
       this.setState({
         name: this.props.robot.name || '',

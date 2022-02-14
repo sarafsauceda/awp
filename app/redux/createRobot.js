@@ -19,6 +19,7 @@ export const createRobot = (robot) => {
   return async (dispatch) => {
       try {
     const { data } = await axios.post('/api/robots', robot);
+    console.log('lkkkk', data)
     dispatch(_createRobot(data));
     history.push('/');
   } catch (err) {
