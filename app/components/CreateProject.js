@@ -15,11 +15,9 @@ class CreateProject extends React.Component {
   }
 
   handleChange(evt) {
-    console.log('wassup');
     this.setState({
       [evt.target.title]: evt.target.value,
     });
-    
   }
 
   handleSubmit(evt) {

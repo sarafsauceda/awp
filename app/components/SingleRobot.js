@@ -7,13 +7,13 @@ class SingleRobot extends React.Component {
 
   componentDidMount() {
     // console.log('text', this.state)
-    // console.log('hello', this.props.match.params.robotId)
+    // console.log('hello there', this.props.match.params.robotId)
     this.props.getSingleRobot(this.props.match.params.robotId);
   }
 
   render() {
     const {singleRobot} = this.props;
-    //console.log('hiiiii', singleRobot)
+    console.log('hiiiijjjji', singleRobot)
     return (
       <div>
         {/* <EditRobot /> */}

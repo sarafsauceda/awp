@@ -44,7 +44,7 @@ router.post('/', async (req, res, next) => {
 
 
 //DELETE /Remove robots
-router.delete('/:robotId', async (req, res, next) => {
+router.delete('/', async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.robotId);
     await robot.destroy();

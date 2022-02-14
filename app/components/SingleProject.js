@@ -3,6 +3,17 @@ import {connect} from 'react-redux';
 import { getSingleProject } from '../redux/singleProject'
 
 class SingleProject extends React.Component {
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     completed: false
+  //   }
+  //   this.handleClick = this.handleClick.bind(this)
+  // }
+  
+  // handleClick() {
+  //   this.setState(prevState => ({completed: !prevState.completed }))
+  // }
 
   componentDidMount() {
     // console.log('text', this.state)
@@ -12,16 +23,20 @@ class SingleProject extends React.Component {
 
   render() {
     const {singleProject} = this.props;
-    //console.log('hiiiii', singleProject)
+    // const {completed} = this.state
+    // console.log('completed', this.state.completed)
+    // console.log('hiiiii', singleProject)
     return (
       <div>
         <h1>
       {singleProject.title}
         </h1>
-        <h2>Description:{singleProject.description}</h2>
-      <h2>Deadline:{singleProject.deadline}</h2>
-      <h2>Priority:{singleProject.priority}</h2>
-      <h2>Complete?{singleProject.completed}</h2>
+        <h2>Description: {singleProject.description}</h2>
+      <h2>Deadline: {singleProject.deadline}</h2>
+      <h2>Priority: {singleProject.priority}</h2>
+      <button type="button" onClick={this.handleClick}>Complete Status</button>
+      <h2>Complete Status: {singleProject.completed ? 'Complete' : 'Incomplete'}</h2>
+      
       {/* <h2>Robot(s) Assigned:{singleProject.robots}</h2> */}
       </div>
     )

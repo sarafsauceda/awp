@@ -4,11 +4,11 @@ import axios from 'axios';
 const DELETE_ROBOT = 'DELETE_ROBOT';
 
 // action creators
-const _deleteRobot = (robotId) => {
-  console.log('please work', robotId)
+const _deleteRobot = (id ) => {
+  console.log('please work', id)
     return {
       type: DELETE_ROBOT,
-      robotId
+      id
     };
   };
 
@@ -24,10 +24,10 @@ const _deleteRobot = (robotId) => {
   // };
 
   export const deleteRobot = (robotId) => {
-    console.log('pkease', robotId)
+    console.log('pkease', id)
     return async (dispatch) => {
-      await axios.delete(`/api/robots/${robotId}`);
-      dispatch(_deleteRobot(robotId));
+      await axios.delete(`/api/robots/${id}`);
+      dispatch(_deleteRobot(id));
     };
   };
 

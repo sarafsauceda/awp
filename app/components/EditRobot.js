@@ -11,6 +11,7 @@ class EditRobot extends Component {
     super(props);
     this.state = {
       name: '',
+      fuelLevel: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,13 +24,14 @@ class EditRobot extends Component {
   }
 
   componentWillUnmount() {
-    this.props.deleteRobot();
+    this.props.setRobot();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.robot.id !== this.props.robot.id) {
       this.setState({
         name: this.props.robot.name || '',
+        fuelLevel: this.props.fuelLevel || ''
       });
     }
   }
@@ -46,8 +48,8 @@ class EditRobot extends Component {
   }
 
   render() {
-    console.log('name', name)
-    const { name } = this.state;
+    console.log('name', this.state)
+    const { name, fuelLevel } = this.state;
     const { handleSubmit, handleChange } = this;
 
     return (
@@ -55,11 +57,11 @@ class EditRobot extends Component {
         <form id='robot-form' onSubmit={handleSubmit}>
           <label htmlFor='name'>Robot Name:</label>
           <input name='name' onChange={handleChange} value={name} />
-{/* 
-          <label htmlFor='assignee'>Assign To:</label>
-          <input name='assignee' onChange={handleChange} value={assignee} /> */}
 
-          <button type='submit'>Submit</button>
+          <label htmlFor='fuelLevel'>Fuel Level:</label>
+          <input name='fuelLevel' onChange={handleChange} value={fuelLevel} />
+
+          <button type='submit'>Save Changes</button>
         </form>
         <form onSubmit={(ev) => ev.preventDefault()}>
           <button
@@ -81,9 +83,9 @@ const mapStateToProps = ({ robot }) => ({
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   updateRobot: (robot) => dispatch(updateRobot(robot, history)),
-  deleteRobot: (robot) => dispatch(deleteRobot(robot, history)),
+  deleteRobot: (robot) => dispatch(deleteRobot(robot)),
   fetchRobot: (robotId) => dispatch(fetchRobot(robotId)),
-  clearRobot: () => dispatch(setRobot({}))
+  setRobot: () => dispatch(setRobot({}))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRobot);

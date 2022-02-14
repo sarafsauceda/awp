@@ -11,7 +11,7 @@ const gotSingleProject = (project) => ({
 
 export const getSingleProject = (projectId) => {
   return async (dispatch) => {
-      // console.log('sfkldfl;', projectId)
+    console.log('sfkldfl;', projectId)
     try {
       const {data} = await axios.get(`/api/projects/${projectId}`)
       dispatch(gotSingleProject(data))

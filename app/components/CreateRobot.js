@@ -7,7 +7,7 @@ class CreateRobot extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: ' ',
+      name: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,6 @@ class CreateRobot extends React.Component {
       <form id="robot-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Add New Robot:</label>
         <input name="name" onChange={handleChange} value={name} />
-
         <button type="submit">Submit</button>
         <Link to="/">Cancel</Link>
       </form>
