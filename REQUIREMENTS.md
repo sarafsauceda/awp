@@ -116,8 +116,8 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Backend
 
-- [ ] Write a route to remove a robot (based on its id)
-- [ ] Write a route to remove a project (based on its id)
+- [ x ] Write a route to remove a robot (based on its id)
+- [ x ] Write a route to remove a project (based on its id)
 
 Congrats! You have completed your fourth vertical slice! Make sure to `commit -m "Feature: Remove Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -146,8 +146,8 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Backend
 
-- [ ] Write a route to update an existing project
-- [ ] Write a route to update an existing robot
+- [ x ] Write a route to update an existing project
+- [ x ] Write a route to update an existing robot
 
 
 Congrats! You have completed your fifth vertical slice! Make sure to `commit -m "Feature: Update Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!

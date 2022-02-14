@@ -12,6 +12,7 @@ import SingleProject from './SingleProject';
 import CreateRobot from './CreateRobot'
 import CreateProject from './CreateProject'
 import EditRobot from './EditRobot'
+import Home from './Home'
 
 const Routes = () => {
   return (
@@ -27,6 +28,7 @@ const Routes = () => {
         <main>
           <div>
             <Switch>
+            {/* <Route exact path='/' component={Home} /> */}
             <Route exact path='/robots' component={AllRobots} />
             
             <Route exact path='/projects' component={AllProjects} />
@@ -46,6 +48,7 @@ const Routes = () => {
           <div className='list'>
             <AllProjects />
             <AllRobots />
+            {/* <Home /> */}
             {/* <CreateProject />
             <CreateRobot /> */}
           </div>
