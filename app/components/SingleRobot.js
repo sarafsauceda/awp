@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { getSingleRobot } from '../redux/singleRobot'
 import EditRobot from './EditRobot'
+import { deleteRobot } from "../redux/deleteRobot";
 
 class SingleRobot extends React.Component {
 
@@ -9,6 +10,10 @@ class SingleRobot extends React.Component {
     // console.log('text', this.state)
     // console.log('hello there', this.props.match.params.robotId)
     this.props.getSingleRobot(this.props.match.params.robotId);
+  }
+
+  componentWillUnmount() {
+    this.props.deleteRobot(this.props.match.params.robotId)
   }
 
   render() {
@@ -22,6 +27,13 @@ class SingleRobot extends React.Component {
       <h2>Fuel Level:{singleRobot.fuelLevel}</h2>
       {/* <h2>Project(s) Assigned:{singleRobot.projects.title}</h2> */}
       <img src = {singleRobot.imageUrl} />
+      <button
+            type='button'
+                  className="ms-2 "
+                  onClick={() => this.props.deleteRobot(this.props.match.params.robotId)}
+                >
+                  X
+                </button>
       </div>
     )
 
@@ -37,6 +49,7 @@ class SingleRobot extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   getSingleRobot: (robotId) => dispatch(getSingleRobot(robotId)),
+  deleteRobot: (robotId) => dispatch(deleteRobot(robotId)),
 });
 
 export default (connect(mapState, mapDispatchToProps)(SingleRobot));

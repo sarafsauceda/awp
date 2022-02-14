@@ -4,8 +4,8 @@ import axios from 'axios';
 const DELETE_ROBOT = 'DELETE_ROBOT';
 
 // action creators
-const _deleteRobot = (id ) => {
-  console.log('please work', id)
+const _deleteRobot = (id) => {
+  // console.log('please work', id)
     return {
       type: DELETE_ROBOT,
       id
@@ -23,13 +23,24 @@ const _deleteRobot = (id ) => {
   //   };
   // };
 
-  export const deleteRobot = (robotId) => {
-    console.log('pkease', id)
+  export const deleteRobot = (id) => {
+    console.log('delete,', id)
     return async (dispatch) => {
       await axios.delete(`/api/robots/${id}`);
       dispatch(_deleteRobot(id));
     };
   };
+
+  // export const deleteRobot = (id, history) => {
+  //   console.log('pkease', id)
+  //   return async (dispatch) => {
+  //     const {data} = await axios.delete(`/api/robots/${id}`);
+  //     dispatch(_deleteRobot(id));
+  //     history.push('/');
+  //   };
+      // await axios.delete(`/api/robots/${id}`);
+      // dispatch(_deleteRobot(id));
+  // };
 
 const initialState = []
 

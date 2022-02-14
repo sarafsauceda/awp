@@ -13,47 +13,32 @@ export class AllProjects extends React.Component {
     this.props.fetchProjects();
   }
 
-  componentWillUnmount() {
-    this.props.deleteProject(this.props.match.params.projectId)
-  }
-
   render() {
     const { projects } = this.props;
     console.log("allprojects", projects);
     return (
       <div>
         <CreateProject />
-        {projects.map((project) => {
-          return (
-            <div key={project.id}>
-              <Link to={`/projects/${project.id}`}>
-              <h2>Project Title: {project.title}</h2>
+        {projects.map(( { id, title, deadline }) => (
+            <div key={id}>
+              <Link to={`/projects/${id}`}>
+              <h2>Project Title: {title}</h2>
               </Link>
-              <div><h3>Project Deadline: {project.deadline}</h3>
+              <h3>Project Deadline: {deadline}</h3>
               <button
-            type='button'
+            type="button"
                   className="ms-2 "
-                  onClick={() => this.props.deleteProject(this.props.match.params.projectId)}
+                  onClick={() => this.props.deleteProject(id)}
                 >
                   X
-                </button>
-              </div>
+              </button>
+            
             </div>
-          );
-        })}
+        ))}
       </div>
-    );
-  }
-}
+        )}}
 
-// const mapState = ({ robots, projects }) => {
-//   return {
-//   robots,
-//   projects,
-//   };
-//   };
 const mapState = (state) => {
-  //console.log("state", state);
   return {
     projects: state.projects,
   };
@@ -62,7 +47,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchProjects: () => dispatch(fetchProjects()),
-    deleteProject: (projectId) => dispatch(deleteProject)(projectId)
+    deleteProject: (id) => dispatch(deleteProject)(id)
   };
 };
 

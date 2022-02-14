@@ -4,28 +4,30 @@ import axios from 'axios';
 const DELETE_PROJECT = 'DELETE_PROJECT';
 
 // action creators
-const _deleteProject = (project) => {
+const _deleteProject = (id) => {
+//   console.log('please work', id)
     return {
       type: DELETE_PROJECT,
-      project
+      id
     };
   };
 
-  export const deleteProject = (projectId, history) => {
+  //thunk creator
+  export const deleteProject = (id) => {
+    // console.log('delete,', id)
     return async (dispatch) => {
-      const {data: project} = await axios.delete(`/api/projects/${projectId}`);
-      dispatch(_deleteProject(project));
-      history.push('/');
+      await axios.delete(`/api/projects/${id}`);
+      dispatch(_deleteProject(id));
     };
   };
 
- const initialState = []
+const initialState = []
 
 //reducer
 export default function deleteProjectReducer (state = initialState, action) {
     switch (action.type) {
         case DELETE_PROJECT:
-            return state.filter((project) => project.id !== action.project.id)
+          return state.filter((project) => project.id !== action.robotId)
             default:
             return state
     }

@@ -14,10 +14,6 @@ export class AllRobots extends React.Component {
     this.props.fetchRobots();
   }
 
-  componentWillUnmount() {
-    this.props.deleteRobot(this.props.match.params.robotId)
-  }
-
   render() {
     const { robots } = this.props;
 
@@ -25,19 +21,19 @@ export class AllRobots extends React.Component {
       <div>
         <CreateRobot />
         {/* <EditRobot /> */}
-        {robots.map((robot) => (
-          <div key={robot.id}>
-            <Link to={`/robots/${robot.id}`}>
-             <h2>{robot.name}</h2>
-             <img src={robot.imageUrl} />
+        {robots.map(( { id, name, imageUrl }) => (
+          <div key={id}>
+            <Link to={`/robots/${id}`}>
+             <h2>{name}</h2>
+             <img src={imageUrl} />
             </Link>
             <button
-            type='button'
+            type="button"
                   className="ms-2 "
-                  onClick={() => this.props.deleteRobot(this.props.match.params.robotId)}
+                  onClick={() => this.props.deleteRobot(id)}
                 >
                   X
-                </button>
+            </button>
           </div>
         ))}
       </div>
@@ -46,79 +42,16 @@ export class AllRobots extends React.Component {
 }
 
 const mapState = (state) => {
-  //console.log("state", state);
   return {
     robots: state.robots,
   };
 };
 
-// const mapDispatch = (dispatch) => ({
-//   fetchRobots: () => dispatch(fetchRobots()),
-// });
-
-// const mapState = ({ robots, projects }) => {
-//   return {
-//   robots,
-//   projects,
-//   };
-//   };
   const mapDispatch = (dispatch) => {
   return {
-  fetchRobots: () => dispatch(fetchRobots()),
-  deleteRobot: (robotId) => dispatch(deleteRobot(robotId)),
+    fetchRobots: () => dispatch(fetchRobots()),
+    deleteRobot: (id) => dispatch(deleteRobot(id)),
   };
   };
 
 export default connect(mapState, mapDispatch)(AllRobots);
-
-
-
-
-
-{/* <>
-<CreateRobot />
-<ListGroup className="m-2" as="ol" numbered>
-    {robots.map(({ robotId, name, projects }) => {
-      return (
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-          key={id}
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">{name}</div>
-            <Link to={`/robots/${robotId}`}>see details </Link>
-          </div>
-
-          <Badge variant="primary" pill>
-            ({projects ? projects.length : 0} projects)
-          </Badge>
-          <Button
-            className="ms-2 "
-            onClick={() => this.props.deleteRobot(robotId)}
-          >
-            Delete
-          </Button>
-        </ListGroup.Item>
-      );
-    })}
-  </ListGroup>
-</>
-);
-}
-}
-
-const mapState = ({ robots, projects }) => {
-return {
-robots,
-projects,
-};
-};
-const mapDispatch = (dispatch) => {
-return {
-deleteRobot: (robotId) => dispatch(deleteRobot(robotId)),
-fetchRobots: () => dispatch(fetchRobots()),
-};
-};
-
-export default connect(mapState, mapDispatch)(AllRobots); */}
