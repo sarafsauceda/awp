@@ -1,10 +1,9 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import { getSingleProject } from '../redux/singleProject'
-import EditProject from './EditProject';
+import React from "react";
+import { connect } from "react-redux";
+import { getSingleProject } from "../redux/singleProject";
+import EditProject from "./EditProject";
 import { Link } from "react-router-dom";
-import { deleteProject} from "../redux/deleteProject";
-
+import { deleteProject } from "../redux/deleteProject";
 
 class SingleProject extends React.Component {
   componentDidMount() {
@@ -13,9 +12,9 @@ class SingleProject extends React.Component {
 
   render() {
     const { singleProject } = this.props;
-    let robots = []
-    if (singleProject.hasOwnProperty('robots')) {
-      robots = singleProject.robots
+    let robots = [];
+    if (singleProject.hasOwnProperty("robots")) {
+      robots = singleProject.robots;
     }
     return (
       <div>
@@ -23,9 +22,12 @@ class SingleProject extends React.Component {
         <Link to={`/projects/edit/${singleProject.id}`}>
           <h2>(edit)</h2>
         </Link>
-        <h2>Deadline:{singleProject.deadline}</h2>
+        <h2>Description: {singleProject.description}</h2>
+     <h2>Deadline: {singleProject.deadline}</h2>
+  <h2>Priority: {singleProject.priority}</h2>
+   <h2>Complete Status: {singleProject.completed ? 'Complete' : 'Incomplete'}</h2>
         <h2>Robots(s) Assigned:</h2>
-        {robots.map (( { id, name}) => (
+        {robots.map(({ id, name }) => (
           <div key={id}>
             <h2>{name}</h2>
           </div>
@@ -67,7 +69,7 @@ const mapDispatchToProps = (dispatch) => ({
 //       <h2>Priority: {singleProject.priority}</h2>
 //       <button type="button" onClick={this.handleClick}>Complete Status</button>
 //       <h2>Complete Status: {singleProject.completed ? 'Complete' : 'Incomplete'}</h2>
-      
+
 //       {/* <h2>Robot(s) Assigned:{singleProject.robots}</h2> */}
 //       </div>
 //     )
@@ -85,16 +87,16 @@ const mapDispatchToProps = (dispatch) => ({
 //   getSingleProject: (projectId) => dispatch(getSingleProject(projectId)),
 // });
 
-export default (connect(mapState, mapDispatchToProps)(SingleProject));
+export default connect(mapState, mapDispatchToProps)(SingleProject);
 
- // constructor() {
-  //   super()
-  //   this.state = {
-  //     completed: false
-  //   }
-  //   this.handleClick = this.handleClick.bind(this)
-  // }
-  
-  // handleClick() {
-  //   this.setState(prevState => ({completed: !prevState.completed }))
-  // }
+// constructor() {
+//   super()
+//   this.state = {
+//     completed: false
+//   }
+//   this.handleClick = this.handleClick.bind(this)
+// }
+
+// handleClick() {
+//   this.setState(prevState => ({completed: !prevState.completed }))
+// }

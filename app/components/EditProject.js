@@ -37,8 +37,6 @@ class EditProject extends React.Component {
       handleSubmit(evt) {
         evt.preventDefault();
         this.props.updateProject({ ...this.props.setProject, ...this.state });
-        // console.log('handlesubmit react component', { ...this.props.project, ...this.state} )
-        console.log('this.props.project', this.props)
       }
     
       render() {
@@ -65,40 +63,7 @@ class EditProject extends React.Component {
     
     const mapDispatchToProps = (dispatch, { history }) => ({
       updateProject: (project) => dispatch(updateProject(project, history)),
-      fetchProject: (id) => dispatch(fetchProject(id)),
-    //   setProject: () => dispatch(_setProject({}))
+      fetchProject: (id) => dispatch(fetchProject(id))
     });
     
     export default connect(mapStateToProps, mapDispatchToProps)(EditProject);
-    //     this.handleClick = this.handleClick.bind(this)
-    // }
-    
-    // handleClick() {
-    //   this.setState(prevState => ({completed: !prevState.completed }))
-    // }
-
-    // render() {
-    //     const { completed } = this.state
-    //     console.log('completed', this.state.completed)
-    //     return (
-    //         <div>
-    //     <button type="button" onClick={this.handleClick}>Complete Status</button>
-    //         </div>
-    //     )
-    // }
-    
-    // export default EditProject
-
-    //   async handleSave(evt) {
-    //     evt.preventDefault();
-    //     try {
-    //       const { title } = this.state;
-    //       await this.props.updateProject({
-    //         id: this.props.project.id,
-    //         title
-    //       });
-    //     } catch (er) {
-    //       this.setState({ error: er.response.data });
-    //     }
-    //   }
-

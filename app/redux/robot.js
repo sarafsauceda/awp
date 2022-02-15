@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
-const SET_ROBOT = 'SET_ROBOT';
+const SET_ROBOT = "SET_ROBOT";
 
 export const _setRobot = (robot) => {
   return {
     type: SET_ROBOT,
-    robot
+    robot,
   };
 };
 
@@ -16,7 +16,7 @@ export const fetchRobot = (id) => {
   };
 };
 
-export default function setProjectReducer (state = {}, action) {
+export default function setProjectReducer(state = {}, action) {
   switch (action.type) {
     case SET_ROBOT:
       return action.robot;

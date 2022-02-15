@@ -1,50 +1,48 @@
-const express =  require('express');
+const express = require("express");
 const router = express.Router();
-const {Robot, Project} = require('../db')
+const { Robot, Project } = require("../db");
 
 //GET /robots, display all robots
 
-router.get('/', async(req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const robots = await Robot.findAll()
+    const robots = await Robot.findAll();
     res.json(robots);
   } catch (err) {
     next(err);
-}
-  })
+  }
+});
 
 // GET /robots/:robotId
 
-router.get('/:robotId', async (req, res, next) => {
+router.get("/:robotId", async (req, res, next) => {
   try {
     const robot = await Robot.findOne({
       where: {
-        id: req.params.robotId
+        id: req.params.robotId,
       },
-      include: [ { model: Project }]
-      
-    })
-  res.json(robot);
+      include: [{ model: Project }],
+    });
+    res.json(robot);
   } catch (error) {
     next(error);
   }
 });
 
 // POST /robots create new robot
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     // res.status(201).send(await Robot.create(req.body));
-   const newRobot = (await Robot.create(req.body));
-   console.log('newtobots', newRobot)
-    res.redirect('/')
+    const newRobot = await Robot.create(req.body);
+    console.log("newtobots", newRobot);
+    res.redirect("/");
   } catch (error) {
     next(error);
   }
 });
 
-
 //DELETE /Remove robots
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id);
     await robot.destroy();
@@ -56,7 +54,7 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 // PUT /api/robots/:id
-router.put('/:robotId', async (req, res, next) => {
+router.put("/:robotId", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.robotId);
     res.send(await robot.update(req.body));
@@ -64,16 +62,5 @@ router.put('/:robotId', async (req, res, next) => {
     next(error);
   }
 });
-// router.put('/edit/:robotId', async (req, res, next) => {
-//   try {
-//     const robot = await Robot.update(req.body.robot, {
-//       where: { id: req.params.robotId },
-//     });
-//     res.send(robot);
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
 
 module.exports = router;
-

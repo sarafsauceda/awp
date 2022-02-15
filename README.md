@@ -1,3 +1,5 @@
+Walkthrough video link: https://youtu.be/3hDZ6fJr2rg
+
 # Junior Phase Final Project
 
 ## Getting started

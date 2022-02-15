@@ -13,7 +13,6 @@ class SingleRobot extends React.Component {
 
   render() {
     const { singleRobot } = this.props;
-    console.log("hiiiijjjji", singleRobot);
     let projects = [];
     if (singleRobot.hasOwnProperty("projects")) {
       projects = singleRobot.projects;
@@ -48,7 +47,6 @@ class SingleRobot extends React.Component {
 }
 
 const mapState = (state) => {
-  console.log("singlerobotstate", state);
   return {
     singleRobot: state.singleRobot,
   };

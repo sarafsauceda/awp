@@ -43,17 +43,7 @@ const Routes = () => {
             {/* <Route component={NotFound} /> */}
             </Switch>
           </div>
-          {/* <h1>
-            Welcome to StackBot Project Management: your robot employees are
-            awaiting assignments!
-          </h1> */}
-          {/* <p>This seems like a nice place to get started with some Routes!</p> */}
           <div className='list'>
-            {/* <AllProjects />
-            <AllRobots /> */}
-            {/* <Home /> */}
-            {/* <CreateProject />
-            <CreateRobot /> */}
           </div>
         </main>
       </div>
