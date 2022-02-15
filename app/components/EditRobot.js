@@ -18,7 +18,7 @@ class EditRobot extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRobot = this.props.match.params.id;
+    this.props.fetchRobot(this.props.match.params.id)
     // this.props.fetchRobot(id);
   }
 
@@ -42,40 +42,7 @@ class EditRobot extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.updateRobot({ ...this.props.setRobot, ...this.state });
-  }
-
-  // async handleSave(evt) {
-  //   evt.preventDefault();
-  //   try {
-  //     const { name, fuelLevel } = this.state;
-  //     await this.props.updateRobot({
-  //       id: this.props.robot.id,
-  //       name,
-  //       fuelLevel,
-  //     });
-  //   } catch (er) {
-  //     this.setState({ error: er.response.data });
-  //   }
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   console.log('prevprops', prevProps)
-
-  //   if (prevProps.robot.id !== this.props.robot.id) {
-  //     this.setState({
-  //       name: this.props.robot.name || '',
-  //       fuelLevel: this.props.fuelLevel || ''
-  //     });
-  //   }
-  // }
-
-  // handleChange(evt) {
-  //   this.setState({
-  //     [evt.target.name]: evt.target.value
-  //   });
-  // }
-
-  
+  } 
 
   render() {
     console.log("name", this.state);
@@ -110,3 +77,34 @@ const mapDispatchToProps = (dispatch, { history }) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRobot);
+
+  // async handleSave(evt) {
+  //   evt.preventDefault();
+  //   try {
+  //     const { name, fuelLevel } = this.state;
+  //     await this.props.updateRobot({
+  //       id: this.props.robot.id,
+  //       name,
+  //       fuelLevel,
+  //     });
+  //   } catch (er) {
+  //     this.setState({ error: er.response.data });
+  //   }
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log('prevprops', prevProps)
+
+  //   if (prevProps.robot.id !== this.props.robot.id) {
+  //     this.setState({
+  //       name: this.props.robot.name || '',
+  //       fuelLevel: this.props.fuelLevel || ''
+  //     });
+  //   }
+  // }
+
+  // handleChange(evt) {
+  //   this.setState({
+  //     [evt.target.name]: evt.target.value
+  //   });
+  // }

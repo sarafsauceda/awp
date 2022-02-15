@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res, next) => {
     const project = await Project.findByPk(req.params.id);
     await project.destroy();
     //res.sendStatus(204);
-    res.send(project);
+    res.redirect('/projects');
   } catch (error) {
     next(error);
   }

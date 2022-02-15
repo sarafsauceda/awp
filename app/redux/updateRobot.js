@@ -14,11 +14,8 @@ const _updateRobot = (robot) => {
   // THUNK CREATORS
   export const updateRobot = (robot, history) => {
     return async (dispatch) => {
-      const { data } = await axios.put(`/api/robots/${robot.id}`, {
-          robot,
-          
-      })
-      console.log(data)
+      const { data } = await axios.put(`/api/robots/${robot.id}`)
+      // console.log(data)
       dispatch(_updateRobot(data));
       history.push('/');
     };

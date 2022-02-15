@@ -13,17 +13,23 @@ class SingleProject extends React.Component {
 
   render() {
     const { singleProject } = this.props;
-    console.log("hiiiijjjji", singleProject);
+    let robots = []
+    if (singleProject.hasOwnProperty('robots')) {
+      robots = singleProject.robots
+    }
     return (
       <div>
-        <h1>Name: {singleProject.title}</h1>
+        <h1> {singleProject.title}</h1>
         <Link to={`/projects/edit/${singleProject.id}`}>
           <h2>(edit)</h2>
         </Link>
-        <h2>Title: {singleProject.title}</h2>
         <h2>Deadline:{singleProject.deadline}</h2>
         <h2>Robots(s) Assigned:</h2>
-        {/* <img src={singleProject.imageUrl} /> */}
+        {robots.map (( { id, name}) => (
+          <div key={id}>
+            <h2>{name}</h2>
+          </div>
+        ))}
         <button
           type="button"
           className="ms-2 "

@@ -40,18 +40,6 @@ class EditProject extends React.Component {
         // console.log('handlesubmit react component', { ...this.props.project, ...this.state} )
         console.log('this.props.project', this.props)
       }
-    //   async handleSave(evt) {
-    //     evt.preventDefault();
-    //     try {
-    //       const { title } = this.state;
-    //       await this.props.updateProject({
-    //         id: this.props.project.id,
-    //         title
-    //       });
-    //     } catch (er) {
-    //       this.setState({ error: er.response.data });
-    //     }
-    //   }
     
       render() {
         console.log('title', this.state)
@@ -100,4 +88,17 @@ class EditProject extends React.Component {
     // }
     
     // export default EditProject
+
+    //   async handleSave(evt) {
+    //     evt.preventDefault();
+    //     try {
+    //       const { title } = this.state;
+    //       await this.props.updateProject({
+    //         id: this.props.project.id,
+    //         title
+    //       });
+    //     } catch (er) {
+    //       this.setState({ error: er.response.data });
+    //     }
+    //   }
 

@@ -8,18 +8,16 @@ import { Link } from "react-router-dom";
 
 class SingleRobot extends React.Component {
   componentDidMount() {
-    // console.log('text', this.state)
-    // console.log('hello there', this.props.match.params.robotId)
     this.props.getSingleRobot(this.props.match.params.robotId);
   }
 
-  // componentWillUnmount() {
-  //   this.props.deleteRobot(this.props.match.params.robotId)
-  // }
-
   render() {
     const { singleRobot } = this.props;
-    //console.log("hiiiijjjji", singleRobot);
+    console.log("hiiiijjjji", singleRobot);
+    let projects = [];
+    if (singleRobot.hasOwnProperty("projects")) {
+      projects = singleRobot.projects;
+    }
     return (
       <div>
         <h1>Name: {singleRobot.name}</h1>
@@ -29,6 +27,11 @@ class SingleRobot extends React.Component {
         <h2>Fuel Type: {singleRobot.fuelType}</h2>
         <h2>Fuel Level:{singleRobot.fuelLevel}</h2>
         <h2>Project(s) Assigned:</h2>
+        {projects.map(({ id, title }) => (
+          <div key={id}>
+            <h2>{title}</h2>
+          </div>
+        ))}
         <img src={singleRobot.imageUrl} />
         <button
           type="button"
