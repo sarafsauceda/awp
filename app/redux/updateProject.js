@@ -16,7 +16,7 @@ const _updateProject = (project) => {
     return async (dispatch) => {
       console.log('project inside thunk', project)
       const { data } = await axios.put(`/api/projects/${project.id}`);
-      console.log('data', data)
+      // console.log('data', data)
       dispatch(_updateProject(data));
       history.push('/');
     };

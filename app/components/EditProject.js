@@ -63,7 +63,7 @@ class EditProject extends React.Component {
               <h2>Edit Project's Details</h2> 
             <form id='project-form' onSubmit={handleSubmit}>
               <label htmlFor='title'>Project Title:</label>
-              <input title='title' onChange={handleChange} value={title} />    
+              <input title='title' onChange={handleChange} value={title} />
               <button type='submit'>Save Changes</button>
             </form>
           </div>
@@ -100,5 +100,4 @@ class EditProject extends React.Component {
     // }
     
     // export default EditProject
-
 

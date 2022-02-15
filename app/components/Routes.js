@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Link,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 import AllRobots from './AllRobots';
 import AllProjects from './AllProjects';
@@ -21,9 +21,9 @@ const Routes = () => {
     <Router>
       <div>
         <nav>Welcome!
-          <Link to='/'>Home</Link>
-          <Link to='/robots'>Robots</Link>
-          <Link to='/projects'>Projects</Link>
+          <Link to='/'><button type='button'>Home</button></Link>
+          <Link to='/robots'><button type='button'>Robots</button></Link>
+          <Link to='/projects'><button type='button'>Projects</button></Link>
         </nav>
         <main>
           <div>

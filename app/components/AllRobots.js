@@ -14,17 +14,11 @@ export class AllRobots extends React.Component {
     this.props.fetchRobots();
   }
 
-  removeRobot(removedRobot) {
-    this.setState({
-      robot: removedRobot
-    })
-  }
   render() {
     const { robots } = this.props;
 
     return (
       <div>
-        
         <CreateRobot />
         <h1><b>Robots:</b></h1>
         {robots.map(( { id, name, imageUrl, projects }) => (
@@ -33,9 +27,6 @@ export class AllRobots extends React.Component {
              <h2>{name}</h2>
              <img src={imageUrl} />
             </Link>
-            {/* <Badge variant='primary' pill>
-              ({projects ? projects.length : 0 } projects)
-            </Badge> */}
             <button
             type="button"
                   className="ms-2 "

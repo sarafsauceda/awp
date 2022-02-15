@@ -19,7 +19,7 @@ class SingleRobot extends React.Component {
 
   render() {
     const { singleRobot } = this.props;
-    console.log("hiiiijjjji", singleRobot);
+    //console.log("hiiiijjjji", singleRobot);
     return (
       <div>
         <h1>Name: {singleRobot.name}</h1>
@@ -28,7 +28,7 @@ class SingleRobot extends React.Component {
         </Link>
         <h2>Fuel Type: {singleRobot.fuelType}</h2>
         <h2>Fuel Level:{singleRobot.fuelLevel}</h2>
-        {/* <h2>Project(s) Assigned:{singleRobot.projects.title}</h2> */}
+        <h2>Project(s) Assigned:</h2>
         <img src={singleRobot.imageUrl} />
         <button
           type="button"

@@ -5,7 +5,6 @@ const DELETE_ROBOT = 'DELETE_ROBOT';
 
 // action creators
 const _deleteRobot = (id) => {
-  // console.log('please work', id)
     return {
       type: DELETE_ROBOT,
       id
@@ -14,9 +13,7 @@ const _deleteRobot = (id) => {
 
   //thunk creator
   export const deleteRobot = (id) => {
-    console.log('delete,', id)
     return async (dispatch) => {
-      
       const {data} = await axios.delete(`/api/robots/${id}`);
       console.log('data', data)
       dispatch(_deleteRobot(data));

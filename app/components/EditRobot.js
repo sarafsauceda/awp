@@ -14,17 +14,17 @@ class EditRobot extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.fetchRobot(id);
+    this.props.fetchRobot = this.props.match.params.id;
+    // this.props.fetchRobot(id);
   }
 
-  componentWillUnmount() {
-    this.props.updateRobot();
-  }
+  // componentWillUnmount() {
+  //   this.props.updateRobot();
+  // }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.robot && this.props.robot) {
@@ -39,19 +39,24 @@ class EditRobot extends Component {
     });
   }
 
-  async handleSave(evt) {
+  handleSubmit(evt) {
     evt.preventDefault();
-    try {
-      const { name, fuelLevel } = this.state;
-      await this.props.updateRobot({
-        id: this.props.robot.id,
-        name,
-        fuelLevel,
-      });
-    } catch (er) {
-      this.setState({ error: er.response.data });
-    }
+    this.props.updateRobot({ ...this.props.setRobot, ...this.state });
   }
+
+  // async handleSave(evt) {
+  //   evt.preventDefault();
+  //   try {
+  //     const { name, fuelLevel } = this.state;
+  //     await this.props.updateRobot({
+  //       id: this.props.robot.id,
+  //       name,
+  //       fuelLevel,
+  //     });
+  //   } catch (er) {
+  //     this.setState({ error: er.response.data });
+  //   }
+  // }
 
   // componentDidUpdate(prevProps) {
   //   console.log('prevprops', prevProps)
@@ -70,20 +75,17 @@ class EditRobot extends Component {
   //   });
   // }
 
-  // handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   this.props.updateRobot({ ...this.props.robot, ...this.state });
-  // }
+  
 
   render() {
     console.log("name", this.state);
     const { name, fuelLevel } = this.state;
-    const { handleSave, handleChange } = this;
+    const { handleSubmit, handleChange } = this;
 
     return (
       <div>
         <h1>Edit Robot's Details:</h1>
-        <form id="robot-form" onSubmit={handleSave}>
+        <form id="robot-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Robot Name:</label>
           <input name="name" onChange={handleChange} value={name} />
 
@@ -97,14 +99,14 @@ class EditRobot extends Component {
   }
 }
 
-const mapStateToProps = ({ robot }) => ({
-  robot,
+const mapStateToProps = ({ setRobot }) => ({
+  setRobot,
 });
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   updateRobot: (robot) => dispatch(updateRobot(robot, history)),
   fetchRobot: (id) => dispatch(fetchRobot(id)),
-  setRobot: () => dispatch(_setRobot({})),
+  // setRobot: () => dispatch(_setRobot({})),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRobot);

@@ -14,12 +14,12 @@ const _updateRobot = (robot) => {
   // THUNK CREATORS
   export const updateRobot = (robot, history) => {
     return async (dispatch) => {
-      const { data: updated } = await axios.put(`/api/robots/${robot.id}`, {
+      const { data } = await axios.put(`/api/robots/${robot.id}`, {
           robot,
           
       })
-      console.log(updated)
-      dispatch(_updateRobot(updated));
+      console.log(data)
+      dispatch(_updateRobot(data));
       history.push('/');
     };
   };
