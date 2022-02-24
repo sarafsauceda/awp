@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { createRobot } from "../redux/createRobot";
+import { createRestaurant } from "../redux/restaurants";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-class CreateRobot extends React.Component {
+class CreateRestaurant extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,27 +22,27 @@ class CreateRobot extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.createRobot({ ...this.state });
+    this.props.createRestaurant({ ...this.state });
   }
 
   render() {
     const { name } = this.state;
-   // console.log('name', this.state)
     const { handleSubmit, handleChange } = this;
-    console.log('sara');
     return (
-      <form id="robot-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Add New Robot:</label>
+      <form id="restaurant-form" onSubmit={handleSubmit}>
+        <label htmlFor="name">Where to next?</label>
         <input name="name" onChange={handleChange} value={name} />
-        <button type="submit">Submit</button>
-        <Link to="/">Cancel</Link>
+        <button type="submit">Add new restaurant</button>
+        <Link to='https://www.yelp.com/'>
+        <button type='button'>I need Inspiration</button>
+        </Link>
       </form>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    createRobot: (robot) => dispatch(createRobot(robot)),
+  createRestaurant: (restaurant) => dispatch(createRestaurant(restaurant)),
 });
 
-export default connect(null, mapDispatchToProps)(CreateRobot);
+export default connect(null, mapDispatchToProps)(CreateRestaurant);

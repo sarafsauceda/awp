@@ -1,23 +1,12 @@
-// The purpose of this module is to bring your Sequelize instance (`db`) together
-// with your models, for which you'll find some blank files in this directory:
-
 const db = require('./database')
-const Project = require('./project')
-const Robot = require('./robot')
+const Restaurant = require('./Restaurant')
+const Neighborhood = require('./Neighborhood')
 
-// This is a great place to establish associations between your models
-// (https://sequelize-guides.netlify.com/association-types/).
-// Example:
-//
-// Puppy.belongsTo(Owner)
-// project to robot ->
-
-Project.belongsToMany(Robot, { through: 'RobotProject' } );
-Robot.belongsToMany(Project, { through: 'RobotProject' } );
+Restaurant.belongsTo(Neighborhood)
+Neighborhood.hasMany(Restaurant)
 
 module.exports = {
-  // Include your models in this exports object as well!
   db,
-  Project,
-  Robot,
+  Restaurant,
+  Neighborhood,
 }
