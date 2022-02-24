@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CreateRestaurant from "./AddRestaurant";
 // import EditRestaurant from "./EditRestaurant";
 import { deleteRestaurant } from "../redux/restaurants";
+import Map from "./Map"
 
 
 export class AllRestaurants extends React.Component {
@@ -14,19 +15,19 @@ export class AllRestaurants extends React.Component {
 
   render() {
     const { restaurants } = this.props;
+    console.log('nnnn ->>', this.props)
 
     return (
       <div>
         <CreateRestaurant />
-        <h1>
+        {/* <Map /> */}
+        <h3>
           <b>Places I need to try in San Francisco:</b>
-        </h1>
-        {restaurants.map(({ id, name, neighborhoodId }) => (
+        </h3>
+        {restaurants.map(({ id, name, type, neighborhoodId }) => (
           <div key={id}>
-            <Link to={`/restaurants/${id}`}>
-              <h2>{name}</h2>
-              {neighborhoodId}
-            </Link>
+              <p>{name}</p>
+            <h4>Type: {type}</h4>              
             <button
               type="button"
               className="ms-2 "
@@ -34,6 +35,7 @@ export class AllRestaurants extends React.Component {
             >
               Check it off the list!
             </button>
+            
           </div>
         ))}
       </div>

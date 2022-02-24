@@ -20,6 +20,23 @@ const seed = async () => {
     type: 'Italian'
   })
 
+  const caminoAlto = await Restaurant.create({
+    name: 'Camino Alto',
+    type: 'American'
+  })
+
+  const robin = await Restaurant.create({
+    name: 'Robin',
+    type: 'Japanese'
+  })
+
+  const flores = await Restaurant.create({
+    name: 'Flores',
+    type: 'Mexican'
+  })
+
+
+
   await ojs.setNeighborhood(northBeach)
 
   const balboa = await Restaurant.create({

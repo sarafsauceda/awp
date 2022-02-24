@@ -3,6 +3,7 @@ import axios from "axios";
 //action types
 const SET_RESTAURANTS = 'SET_RESTAURANTS';
 const CREATE_RESTAURANT = 'CREATE_RESTAURANT';
+const DELETE_RESTAURANT = "DELETE_RESTAURANT"
 
 //action creator
 export const setRestaurants = (restaurants) => {
@@ -19,6 +20,13 @@ const _createRestaurant = (restaurant) => {
     restaurant,
   };
 };
+
+const _deleteRestaurant = (restaurantId) => ({
+  type: DELETE_RESTAURANT,
+  restaurantId,
+});
+
+
 //thunk creator
 
 export const fetchRestaurants = () => {
@@ -45,6 +53,13 @@ export const createRestaurant = (restaurant) => {
   };
 };
 
+export const deleteRestaurant = (id) => {
+  return async (dispatch) => {
+    await axios.delete(`/api/restaurants/${id}`);
+    dispatch(_deleteRestaurant(id));
+  };
+};
+
 const initialState = [];
 
 export default function restaurantsReducer(state = initialState, action) {
@@ -52,7 +67,9 @@ export default function restaurantsReducer(state = initialState, action) {
     case SET_RESTAURANTS:
       return action.restaurants;
     case CREATE_RESTAURANT:
-      return [...state, action.restaurant]
+      return [...state, action.restaurant];
+    case DELETE_RESTAURANT:
+        return [...state, action.restaurant];
     default:
       return state;
   }
